@@ -22,13 +22,13 @@ void setup() {
   //bkgrd3 = loadImage("Screenshot (383).png");
   //escFinal = new Escenario(bkgrd3);
   
-  
+  //pantalla
  
   escPortada = new Escenario(loadImage("Screenshot (381).png"));
  
   escIntro = new Escenario(loadImage("Screenshot (382).png"));
   
-  escFinal = new Escenario(loadImage("Screenshot (383).png"));
+  escFinal = new Escenario(loadImage("Screenshot (382).png"));
   
   heroe = new Heroe();
 
