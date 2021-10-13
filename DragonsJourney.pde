@@ -7,6 +7,8 @@ float angulo;
 
 Heroe heroe;
 
+//cambio12
+
 void setup() {
   
   //size(1920,1080);
