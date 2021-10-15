@@ -4,10 +4,10 @@ class Heroe{
   float cx,cy, ang;
   float mover = 0;
   
-  //public Heroe(PImage drag){
+  public Heroe(PImage drag){
     
-  //  dragon = drag;
-  //}
+    dragon = drag;
+  }
   
   public Heroe(){
     //fill(#F77555);
