@@ -19,12 +19,14 @@ class Heroe{
   }
   
   void mover(float mov){
-  fill(#F77555);
+  
   mover = mov;
   ang = 180+ mover;
   cx = width*0.25 + cos(radians(ang)) * 200;
   cy = height/2 + sin(radians(ang)) * 200;
-  ellipse(cx, cy, 40, 40);
+  
+  imageMode(CENTER);
+  image(dragon, cx, cy);
   
   }
   
