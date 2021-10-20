@@ -1,3 +1,11 @@
+import ddf.minim.*;
+
+Minim minim;
+AudioPlayer playI;
+AudioPlayer playJ;
+AudioPlayer playE;
+AudioSample playPauseB;
+
 int escenario;
 Escenario escPortada;
 Escenario escIntro;
@@ -20,12 +28,19 @@ void setup() {
   
   //size(1920,1080);
   fullScreen();
+  
+  minim = new Minim(this);
+  
+  playI = minim.loadFile("Arab Ambient (Full).mp3");
+  playJ = minim.loadFile("Oriental Arabian Oud.mp3");
+  playE = minim.loadFile("Dark Arabic Oriental (Full).mp3");
   escenario = 1;
-
+  interval = 25000;
+  
   
   //pantalla
  
-  escPortada = new Escenario(loadImage("Screenshot (381).png"));
+  escPortada = new Escenario(loadImage("Screenshot (386).png"));
  
   escIntro = new Escenario(loadImage("Screenshot (382).png"));
   
@@ -50,11 +65,10 @@ void setup() {
 
 void escPortada (){
   escPortada.display();
+  playE.pause();
+  playJ.pause();
   
-  //playE.pause();
-  //playJ.pause();
-  
-  //playI.play();
+  playI.play();
   // poner 2 botones, 
   //uno que lleve a la selección de personaje y luego al juego
   // otro que nos lleve a la historia
@@ -71,20 +85,20 @@ void escSeleccion (){
 
 void escGameOver (){
   escGameOver.display();
-  //playJ.pause();
-  //playI.pause();
-  //playE.play();
-  //if (millis () - instant > interval) {
-  //  playE.pause();
-  //  escenario = 1;
+  playJ.pause();
+  playI.pause();
+  playE.play();
+  if (millis () - instant > interval) {
+    playE.pause();
+    escenario = 1;
     
-  //}
+  }
 }
 
 void escJuego() {
     escJuego.display();
-    //playI.pause();
-    //playJ.play();
+    playI.pause();
+    playJ.play();
     for (int i = 0; i < estrellas.size(); i++){
     
     Escenario tmp = estrellas.get(i);
