@@ -18,6 +18,7 @@ int interval;
 ArrayList<Escenario> estrellas;
 
 
+
 Heroe heroe;
 Heroe heroe1;
 float angulo;
