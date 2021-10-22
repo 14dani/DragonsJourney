@@ -14,6 +14,7 @@ Escenario escGameOver;
 Escenario escJuego;
 long instant;
 int interval;
+int Sel;
 
 ArrayList<Escenario> estrellas;
 
@@ -56,8 +57,8 @@ void setup() {
   }
   //___________________________________
   
-  heroe = new Heroe();
-  heroe1 = new Heroe(loadImage("dragon.png"));
+  heroe = new Heroe(int _Sel);
+  heroe1 = new Heroe(int _Sel);
   
   escSeleccion = new Escenario(loadImage("Screenshot (384).png"));
   

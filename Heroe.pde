@@ -1,21 +1,33 @@
 class Heroe{
   
-  PImage dragon;
-  float cx,cy, ang;
+  PImage img;
+  int vidas;
+  PVector loc;
+  float vel, ang;
   float mover = 0;
+  ArrayList<Fuego> fuegos;
+  int _Clase;
   
-  public Heroe(PImage drag){
+  
+  public Heroe(int _Clase){
+    _Clase = 0;
+    //reset();
+    fuegos = new ArrayList<Fuego>();
+    loc = new PVector();
+    vel = 0;
     
-    dragon = drag;
-  }
-  
-  public Heroe(){
-    //fill(#F77555);
-    //ang = 180 + mover;
-    //cx = width*0.25 + cos(radians(ang)) * 200;
-    //cy = height/2 + sin(radians(ang)) * 200;
-    //ellipse(cx, cy, 40, 40);
-   
+    if(_Clase == 1) {
+      img = loadImage("Saphira.png");
+      vel=1; 
+    }
+    else if(_Clase == 2) {
+      img = loadImage("Eldest.png");
+      vel=.75;
+    }
+     else if(_Clase == 3) {
+      img = loadImage("Vervada.png");
+      vel=1.25;
+     }
   }
   
   void mover(float mov){
@@ -26,10 +38,14 @@ class Heroe{
   cy = height/2 + sin(radians(ang)) * 200;
   
   imageMode(CENTER);
-  image(dragon, cx, cy);
+  image(img, cx, cy);
   
   }
-  
+  void dibujar () {
+    
+    
+    
+  }
   
 
 }
