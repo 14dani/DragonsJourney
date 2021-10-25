@@ -1,19 +1,21 @@
 class Heroe{
   
   PImage img;
-  int vidas;
   PVector loc;
-  float vel, ang;
+  float vel, ang, vida;
   float mover = 0;
   ArrayList<Fuego> fuegos;
-  int _Clase;
+  int _Clase, hechizos;
   
   
   public Heroe(int _Clase){
-    _Clase = 0;
+    //_Clase = 2;
     //reset();
+    
     fuegos = new ArrayList<Fuego>();
     loc = new PVector();
+    vida = 100;
+    hechizos = 0;
     vel = 0;
     
     if(_Clase == 1) {
@@ -30,22 +32,33 @@ class Heroe{
      }
   }
   
-  void mover(float mov){
+  void moverYdibujo( float _pMouseY, float _pMouseX){
   
-  mover = mov;
-  ang = 180+ mover;
-  cx = width*0.25 + cos(radians(ang)) * 200;
-  cy = height/2 + sin(radians(ang)) * 200;
+  loc.y = _pMouseY;
+  loc.x = _pMouseX;
   
   imageMode(CENTER);
-  image(img, cx, cy);
+  image(img, loc.x, loc.y);
   
   }
-  void dibujar () {
-    
-    
-    
+  PVector getPosDragon() {
+    return loc;
   }
   
+  float getVida() {
+   return vida; 
+  }
+  
+  float restarVida() {
+   return vida-20; 
+  }
+    float ganarHechizo() {
+   return hechizos; 
+  }
+  
+  void resetDrag() {
+    vida = 100;
+    hechizos = 0;
+  }
 
 }

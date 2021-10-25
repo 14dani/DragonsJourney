@@ -1,35 +1,63 @@
 class Fuego {
   
-  PImage img;
+  PImage imgFuego;
   PVector loc;
   float angulo;
   float radio;
-  boolean isLit;
-  float dif;
+  boolean Valido;
+  float dif, vel, dmg;
+  int _clase;
+ 
   
   
-  public Fuego(float _ang, float _rad) {
-    angulo = _ang;
-    loc = new PVector();
-    radio = _rad;
-    dif = radio;
-    isLit = true;
+  public Fuego(int _clase) {
+    loc = new PVector(_clase,((height/10)-height));
+    Valido = true;
+    if(_clase == 1) {
+      imgFuego = loadImage("Hechizo-Saphira.png");
+      vel=1;
+      dmg = 1;
+    }
+    else if(_clase == 2) {
+      imgFuego = loadImage("Hechizo-Eldest.png");
+      vel=.75;
+      dmg= 1.5;
+    }
+     else if(_clase == 3) {
+      imgFuego = loadImage("Hechizo-Vervada.png");
+      vel=1.25;
+      dmg = .75;
+     }
   }
   
   void dibujar () {
-    float escala = map(radio, dif, 0, 1, 0);
-    noStroke();
-    fill(#5b5b5b);
-    pushMatrix();
-    translate(loc.x, loc.y);
-    scale(escala);
-    circle(0,0,5);
-    popMatrix();
+    //float escala = map(radio, dif, 0, 1, 0);
+    //noStroke();
+    //fill(#5b5b5b);
+    //pushMatrix();
+    //translate(loc.x, loc.y);
+    //scale(escala);
+    //circle(0,0,5);
+    //popMatrix();
+  imageMode(CENTER);
+  image(imgFuego, loc.x, loc.y);
+  }
+   void mover() {
+   loc.x += vel;
+    
+  }
+  PVector getPosFuego() {
+   return loc;
   }
   
+  void quitarFuego() {
+   Valido = false; 
+    
+  }
   
-  
-  
+  boolean esValido(){
+   return Valido;
+  }
   
   
   

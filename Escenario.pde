@@ -9,8 +9,18 @@ class Escenario{
   
   }
   
-  public Escenario(PImage bkgrd){
-    
+  public Escenario(PImage bkgrd)
+    //  if(_sel == 1) {
+    //  fondo = loadImage("Saphira.png");
+    //}
+    //else if(_sel == 2) {
+    //  fondo = loadImage("Eldest.png");
+
+    //}
+    // else if(_sel == 3) {
+    //  fondo = loadImage("Vervada.png");
+    // }
+    {   
     fondo = bkgrd;
     fondo.resize(width,height);
   }

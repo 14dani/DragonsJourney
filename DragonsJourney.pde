@@ -5,6 +5,16 @@ AudioPlayer playI;
 AudioPlayer playJ;
 AudioPlayer playE;
 AudioSample playPauseB;
+//--------------------------------variables
+
+int intervaloDisparo;
+long instanteDisparo;
+
+int intervaloDificultad;
+long instanteDificultad;
+
+float velocidadEnemigo;
+int level;
 
 int escenario;
 Escenario escPortada;
@@ -14,14 +24,15 @@ Escenario escGameOver;
 Escenario escJuego;
 long instant;
 int interval;
-int Sel;
+int sel;
 
+//--------------------------Balas 
 ArrayList<Escenario> estrellas;
+ArrayList<Fuego> FuegoDragon;
 
 
 
 Heroe heroe;
-Heroe heroe1;
 float angulo;
 
 
@@ -57,8 +68,7 @@ void setup() {
   }
   //___________________________________
   
-  heroe = new Heroe(int _Sel);
-  heroe1 = new Heroe(int _Sel);
+  heroe = new Heroe(1);
   
   escSeleccion = new Escenario(loadImage("Screenshot (384).png"));
   
@@ -71,9 +81,7 @@ void escPortada (){
   playJ.pause();
   
   playI.play();
-  // poner 2 botones, 
-  //uno que lleve a la selección de personaje y luego al juego
-  // otro que nos lleve a la historia
+
 
 }
 
@@ -83,6 +91,8 @@ void escIntro (){
 
 void escSeleccion (){
   // investigar lo de la selección de personaje 
+  sel = 0;
+
 }
 
 void escGameOver (){
@@ -113,7 +123,21 @@ void escJuego() {
     tmp.moverEstrella();
   }
   
-    heroe1.mover(angulo);
+    heroe.moverYdibujo(mouseY, mouseX);
+    heroe.getPosDragon();
+    heroe.getVida();
+    text("vidas : " + heroe.getVida(), width/7, 30);
+    //------------------- funciones que se relacionana con mago x dragon
+    //If vida de mago es == 0 
+    //float ganarHechizo() 
+    //-------------------------- función para restar vida si el poder del mago le pega al dragon
+    //if (aux.getPosBalaMago().dist(heroe.getPosDragon()) <= 20) {
+    //      if (aux.getValidaMago()) {
+    //        heroe.restarVida();
+    //        aux.quitarBala();
+    //      //  playerDeath.trigger();
+    //      }
+    //    } 
     
   
 }
@@ -125,6 +149,7 @@ void draw() {
   
   if(escenario == 1){
     escPortada();
+    
   }
   
   else if(escenario == 2){
@@ -132,6 +157,7 @@ void draw() {
   }
   else if(escenario == 3){
     escSeleccion.display();
+    
   }
   else if(escenario == 4){
     escJuego();
@@ -146,6 +172,29 @@ void draw() {
 }
 
 void keyPressed(){
+  if (escenario == 3) {
+    if (key == 's' || key == 'S') {
+      sel = 1;
+    }
+    if (key == 'E' || key == 'e'){
+      sel = 2;
+    }
+    if (key == 'V' || key == 'v'){
+      sel = 3;
+     }
+  }
+  if (key == ' ')  {
+    if (escenario == 4 ||escenario == 5 || escenario == 6) {
+      if (millis() - instanteDisparo > intervaloDisparo) {
+        instanteDisparo = millis();
+        Fuego nuevo = new Fuego(1);
+        FuegoDragon.add(Fuego);
+        //disparo.trigger();
+      }
+    } 
+  }
+  
+  
   if(key == '1'){
     escenario = 1;
   }
