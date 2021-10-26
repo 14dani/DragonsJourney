@@ -8,7 +8,7 @@ class Heroe{
   int _Clase, hechizos;
   
   
-  public Heroe(int _Clase){
+  public Heroe(){
     //_Clase = 2;
     //reset();
     
@@ -18,19 +18,26 @@ class Heroe{
     hechizos = 0;
     vel = 0;
     
-    if(_Clase == 1) {
+    
+  }
+  
+  void selDragon(int _sel) {
+    if(_sel == 1) {
       img = loadImage("Saphira.png");
       vel=1; 
     }
-    else if(_Clase == 2) {
+    else if(_sel == 2) {
       img = loadImage("Eldest.png");
       vel=.75;
     }
-     else if(_Clase == 3) {
+     else if(_sel == 3) {
       img = loadImage("Vervada.png");
       vel=1.25;
      }
+    
+    
   }
+  
   
   void moverYdibujo( float _pMouseY, float _pMouseX){
   
