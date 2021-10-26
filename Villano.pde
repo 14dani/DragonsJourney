@@ -79,23 +79,23 @@ class Villano{
   
   
   //_____________________________________________________Movimiento SemiCircular
-  void movimientoSemicircular(){
+  //void movimientoSemicircular(){
     
     
-    ang = 180;
-    if(ang >= 180){
-      angulo = ang +=4;
-    }
-    else if(ang >= 270){
-      angulo = ang -=4;
-    }
+  //  ang = 180;
+  //  if(ang >= 180){
+  //    angulo = ang +=4;
+  //  }
+  //  else if(ang >= 270){
+  //    angulo = ang -=4;
+  //  }
     
-    cx = pos.x + cos(radians(angulo)) * 250;
-    cy = pos.y + sin(radians(angulo)) * 250;
-    imageMode(CENTER);
-    image(imagenMago, cx, cy);
+  //  cx = pos.x + cos(radians(angulo)) * 250;
+  //  cy = pos.y + sin(radians(angulo)) * 250;
+  //  imageMode(CENTER);
+  //  image(imagenMago, cx, cy);
   
-  }
+  //}
   
 
 

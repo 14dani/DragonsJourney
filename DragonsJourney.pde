@@ -141,6 +141,7 @@ void escJuego() {
     text("vidas : " + heroe.getVida(), width/7, 30);
     
     vlln.mover();
+    
     //vlln1.movimientoSemicircular();
     //------------------- funciones que se relacionana con mago x dragon
     //If vida de mago es == 0 
