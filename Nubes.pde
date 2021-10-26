@@ -2,6 +2,7 @@ class Nube {
  PVector loc;
  PVector vel;
  PImage Nube;
+ 
 
   
  public Nube() {
