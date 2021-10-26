@@ -188,7 +188,7 @@ void keyPressed(){
       if (millis() - instanteDisparo > intervaloDisparo) {
         instanteDisparo = millis();
         Fuego nuevo = new Fuego(1);
-        FuegoDragon.add(Fuego);
+        FuegoDragon.add(nuevo);
         //disparo.trigger();
       }
     } 
