@@ -35,7 +35,7 @@ ArrayList<Fuego> FuegoDragon;
 Heroe heroe;
 float angulo;
 
-Villano vlln;
+Villano vlln, vlln1;
 
 
 
@@ -72,7 +72,10 @@ void setup() {
   
   heroe = new Heroe(3);
   
-  vlln = new Villano(loadImage("magocyan.png"));
+  
+  
+  vlln = new Villano(int(random(0,4)), 0, -4);
+  vlln1 = new Villano(int(random(0,4)));
   
   escSeleccion = new Escenario(loadImage("Screenshot (384).png"));
   
@@ -138,6 +141,7 @@ void escJuego() {
     text("vidas : " + heroe.getVida(), width/7, 30);
     
     vlln.mover();
+    //vlln1.movimientoSemicircular();
     //------------------- funciones que se relacionana con mago x dragon
     //If vida de mago es == 0 
     //float ganarHechizo() 
