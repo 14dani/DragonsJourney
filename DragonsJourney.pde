@@ -35,6 +35,8 @@ ArrayList<Fuego> FuegoDragon;
 Heroe heroe;
 float angulo;
 
+Villano vlln;
+
 
 
 void setup() {
@@ -51,7 +53,7 @@ void setup() {
   interval = 25000;
   
   
-  //pantalla
+  //______________________________________________________________________pantalla
  
   escPortada = new Escenario(loadImage("Screenshot (386).png"));
  
@@ -68,12 +70,17 @@ void setup() {
   }
   //___________________________________
   
-  heroe = new Heroe(1);
+  heroe = new Heroe(3);
+  
+  vlln = new Villano(loadImage("magocyan.png"));
   
   escSeleccion = new Escenario(loadImage("Screenshot (384).png"));
   
   escGameOver = new Escenario(loadImage("Screenshot (385).png"));
 }
+
+
+
 
 void escPortada (){
   escPortada.display();
@@ -111,22 +118,26 @@ void escJuego() {
     escJuego.display();
     playI.pause();
     playJ.play();
+    
+    //_______________________________________________________Estrellas
     for (int i = 0; i < estrellas.size(); i++){
-    
-    Escenario tmp = estrellas.get(i);
-    PVector aux = tmp.getPos();
-    float d = dist(width/2, height/2, aux.x, aux.y);
-    float maxDist = dist(0, 0, width/2, height/2);
-    float tam = map(d,0, maxDist, 5, 40);
-    
-    tmp.dibujarEstrella(tam);
-    tmp.moverEstrella();
-  }
+      Escenario tmp = estrellas.get(i);
+      PVector aux = tmp.getPos();
+      float d = dist(width/2, height/2, aux.x, aux.y);
+      float maxDist = dist(0, 0, width/2, height/2);
+      float tam = map(d,0, maxDist, 5, 40);
+      
+      tmp.dibujarEstrella(tam);
+      tmp.moverEstrella();
+      //_______________________________________________________
+    }
   
     heroe.moverYdibujo(mouseY, mouseX);
     heroe.getPosDragon();
     heroe.getVida();
     text("vidas : " + heroe.getVida(), width/7, 30);
+    
+    vlln.mover();
     //------------------- funciones que se relacionana con mago x dragon
     //If vida de mago es == 0 
     //float ganarHechizo() 
@@ -140,6 +151,7 @@ void escJuego() {
     //    } 
     
   
+
 }
 
 
