@@ -149,21 +149,21 @@ void escJuego(){
   escJuego1.display();
   playI.pause();
   playJ.play();
-  playJ.loop();
+  //playJ.loop();
     
     
   //_______________________________________________________Estrellas
-  for (int i = 0; i < estrellas.size(); i++){
-    Escenario tmp = estrellas.get(i);
-    PVector aux = tmp.getPos();
-    float d = dist(width/2, height/2, aux.x, aux.y);
-    float maxDist = dist(0, 0, width/2, height/2);
-    float tam = map(d,0, maxDist, 5, 40);
+  //for (int i = 0; i < estrellas.size(); i++){
+  //  Escenario tmp = estrellas.get(i);
+  //  PVector aux = tmp.getPos();
+  //  float d = dist(width/2, height/2, aux.x, aux.y);
+  //  float maxDist = dist(0, 0, width/2, height/2);
+  //  float tam = map(d,0, maxDist, 5, 40);
     
-    tmp.dibujarEstrella(tam);
-    tmp.moverEstrella();
+  //  tmp.dibujarEstrella(tam);
+  //  tmp.moverEstrella();
     
-  }
+  //}
   //_______________________________________________________
     
     
@@ -254,21 +254,22 @@ void keyPressed(){
     if (key == 's' || key == 'S') {
       
       heroe.selDragon(1);
-      //escJuego.selEsc(1);
+      //escJuegoscenario.selEsc(1)//;
       //Fuego.selFuego(1);
-      
+      escenario = 4;
       
     }
     if (key == 'E' || key == 'e'){
       //escJuego.selEsc(2);
       heroe.selDragon(2);
+      escenario = 4;
       
     }
     if (key == 'V' || key == 'v'){
       
       heroe.selDragon(3);
       //escJuego.selEsc(3);
-      
+      escenario = 4;
      }
   }
   
