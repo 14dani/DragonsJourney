@@ -17,11 +17,12 @@ float velocidadEnemigo;
 int level;
 
 int escenario;
+
 Escenario escPortada;
 Escenario escIntro;
 Escenario escSeleccion;
 Escenario escGameOver;
-Escenario escJuego;
+Escenario escJuego, escJuego1;
 long instant;
 int interval;
 int sel;
@@ -42,6 +43,10 @@ Villano vlln;
 
 
 Nube[] clouds = new Nube[5];
+
+
+
+
 void setup() {
   
   //size(1920,1080);
@@ -59,10 +64,11 @@ void setup() {
   //______________________________________________________________________pantalla
  
   escPortada = new Escenario(loadImage("Screenshot (386).png"));
- 
   escIntro = new Escenario(loadImage("Screenshot (382).png"));
+  escJuego1 = new Escenario(loadImage("escenario--6.png"));
+  escJuego = new Escenario();
+  escJuego.selEsc(1);
   
-  escJuego = new Escenario(loadImage("escenario--6.png"));
   
   //Fondo de estrellas____________
   
@@ -132,47 +138,49 @@ void escGameOver (){
   }
 }
 
-void escJuego() {
-    escJuego.display();
-    playI.pause();
-    playJ.play();
-    playJ.loop();
-    
-    //_______________________________________________________Estrellas
-    for (int i = 0; i < estrellas.size(); i++){
-      Escenario tmp = estrellas.get(i);
-      PVector aux = tmp.getPos();
-      float d = dist(width/2, height/2, aux.x, aux.y);
-      float maxDist = dist(0, 0, width/2, height/2);
-      float tam = map(d,0, maxDist, 5, 40);
-      
-      tmp.dibujarEstrella(tam);
-      tmp.moverEstrella();
-      //_______________________________________________________
-    }
+void escJuego(){
+  escJuego1.display();
+  playI.pause();
+  playJ.play();
+  playJ.loop();
     
     
-    //____________________________________________________Heroe
-    heroe.moverYdibujo(mouseY, mouseX);
-    heroe.getPosDragon();
+  //_______________________________________________________Estrellas
+  for (int i = 0; i < estrellas.size(); i++){
+    Escenario tmp = estrellas.get(i);
+    PVector aux = tmp.getPos();
+    float d = dist(width/2, height/2, aux.x, aux.y);
+    float maxDist = dist(0, 0, width/2, height/2);
+    float tam = map(d,0, maxDist, 5, 40);
+    
+    tmp.dibujarEstrella(tam);
+    tmp.moverEstrella();
+    
+  }
+  //_______________________________________________________
     
     
-    //____________________________________________________Villano
-    vlln.mover();
-    
-    
-    //------------------- funciones que se relacionana con mago x dragon
-    //If vida de mago es == 0 
-    //float ganarHechizo() 
-    //-------------------------- función para restar vida si el poder del mago le pega al dragon
-    //if (aux.getPosBalaMago().dist(heroe.getPosDragon()) <= 20) {
-    //      if (aux.getValidaMago()) {
-    //        heroe.restarVida();
-    //        aux.quitarBala();
-    //      //  playerDeath.trigger();
-    //      }
-    //    } 
+  //____________________________________________________Heroe
+  heroe.moverYdibujo(mouseY, mouseX);
+  heroe.getPosDragon();
   
+  
+  //____________________________________________________Villano
+  vlln.mover();
+  
+  
+  //------------------- funciones que se relacionana con mago x dragon
+  //If vida de mago es == 0 
+  //float ganarHechizo() 
+  //-------------------------- función para restar vida si el poder del mago le pega al dragon
+  //if (aux.getPosBalaMago().dist(heroe.getPosDragon()) <= 20) {
+  //      if (aux.getValidaMago()) {
+  //        heroe.restarVida();
+  //        aux.quitarBala();
+  //      //  playerDeath.trigger();
+  //      }
+  //    } 
+
 }
 
 
@@ -182,45 +190,45 @@ void draw() {
   
   if(escenario == 1){
     escPortada();
-    
   }
-  
   else if(escenario == 2){
     escIntro.display();
   }
   else if(escenario == 3){
     escSeleccion.display();
-    
   }
   else if(escenario == 4){
     escJuego();
-    //background(0);
-
   }
   else if(escenario == 5){
     escGameOver();
   }
-
-
 }
 
 void keyPressed(){
   if (escenario == 3) {
     if (key == 's' || key == 'S') {
+      
       heroe.selDragon(1);
+      //escJuego.selEsc(1);
       //Fuego.selFuego(1);
-      //Escenario.selEsc(1);
-      escenario = 4;
+      
+      
     }
     if (key == 'E' || key == 'e'){
+      //escJuego.selEsc(2);
       heroe.selDragon(2);
-      escenario = 4;
+      
     }
     if (key == 'V' || key == 'v'){
+      
       heroe.selDragon(3);
-      escenario = 4;
+      //escJuego.selEsc(3);
+      
      }
   }
+  
+  
   if (key == ' ')  {
     if (escenario == 4) {
       heroe.disparar();

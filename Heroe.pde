@@ -34,9 +34,7 @@ class Heroe{
       img = loadImage("Vervada.png");
       vel=1.25;
      }
-    
-    
-  }
+   }
   
   
   void moverYdibujo( float _pMouseY, float _pMouseX){
@@ -46,6 +44,7 @@ class Heroe{
   
   imageMode(CENTER);
   image(img, loc.x, loc.y);
+  
   
   for (int x=0; x<fuegos.size(); x++) {
       Fuego aux = fuegos.get(x);
@@ -63,9 +62,11 @@ class Heroe{
   
   }
   void disparar() {
-    Fuego nueva = new Fuego(1);
-    fuegos.add(nueva);
+    //Fuego nueva = new Fuego(1);
+    //fuegos.add(nueva);
   }
+  
+  
   //-------- falta la pos del villano
   boolean fuegoEnemigo(PVector posEnemigo) {
     for (int x=0; x<fuegos.size(); x++) {
@@ -77,6 +78,8 @@ class Heroe{
     }
     return false;
   }
+  
+  
   void setPos(PVector posicion) {
     loc = posicion;
   }

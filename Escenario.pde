@@ -1,6 +1,6 @@
 class Escenario{
 
-  PImage fondo, imgn;
+  PImage fondo, img;
   PVector pos1, pos, vel;
   
   public Escenario(){
@@ -8,24 +8,8 @@ class Escenario{
     vel = new PVector(-10,10);
   
   }
-  void selEsc(int _sel) {
-    if(_sel == 1) {
-      imgn = loadImage("Escenario 6.png");
-
-    }
-    else if(_sel == 2) {
-      imgn = loadImage("Escenario 7.png");
-
-    }
-     else if(_sel == 3) {
-      imgn = loadImage("Escenario 8.png");
-
-     }
-    
-    
-  }
   
-  public Escenario(PImage bkgrd)
+  public Escenario(PImage bkgrd){
     //  if(_sel == 1) {
     //  fondo = loadImage("Saphira.png");
     //}
@@ -36,18 +20,43 @@ class Escenario{
     // else if(_sel == 3) {
     //  fondo = loadImage("Vervada.png");
     // }
-    {   
+       
     fondo = bkgrd;
     fondo.resize(width,height);
   }
   
   //Constructor para elementos
-  public Escenario(PImage imagen, PVector posicion){
-    
+  public Escenario(PImage imagen, PVector posicion){ 
     pos1 = posicion;
-    imgn = imagen;
-  
+    img = imagen;
   }
+  
+  
+  void selEsc(int _sel) {
+    if(_sel == 1) {
+      img = loadImage("Escenario- 8.png");
+      img.resize(width,height);
+      
+
+    }
+    else if(_sel == 2) {
+      img = loadImage("escenario--6.png");
+      img.resize(width,height);
+      
+
+    }
+     else if(_sel == 3) {
+      img = loadImage("Escenario- 7.png");
+      img.resize(width,height);
+      
+
+     }
+    
+    
+  }
+  
+  
+  
   
   //Función para fondo
   void display(){
@@ -55,7 +64,7 @@ class Escenario{
   }
   
   
-  //Escenario Estrellas___________________
+ //Escenario Estrellas___________________
   void dibujarEstrella(float tam){
     fill(255);
     noStroke();
@@ -73,6 +82,7 @@ class Escenario{
     }
   }
   
+  
   void setPos(PVector posicion){
     pos = posicion;
   }
@@ -82,6 +92,7 @@ class Escenario{
   }
   
   //_______________________________________________
+
   
 
 }
