@@ -22,7 +22,7 @@ Escenario escPortada;
 Escenario escIntro;
 Escenario escSeleccion;
 Escenario escGameOver;
-Escenario escJuego, escJuego1;
+Escenario escJuego1;
 long instant;
 int interval;
 int sel;
@@ -70,9 +70,8 @@ void setup() {
  
   escPortada = new Escenario(loadImage("Screenshot (386).png"));
   escIntro = new Escenario(loadImage("Screenshot (382).png"));
-  escJuego1 = new Escenario(loadImage("escenario--6.png"));
-  escJuego = new Escenario();
-  escJuego.selEsc(1);
+  escJuego1 = new Escenario(sel);
+
   
   
   //Fondo de estrellas____________
@@ -254,13 +253,13 @@ void keyPressed(){
     if (key == 's' || key == 'S') {
       
       heroe.selDragon(1);
-      //escJuegoscenario.selEsc(1)//;
+      escJuego1.selEsc(1);
       //Fuego.selFuego(1);
       escenario = 4;
       
     }
     if (key == 'E' || key == 'e'){
-      //escJuego.selEsc(2);
+      escJuego1.selEsc(2);
       heroe.selDragon(2);
       escenario = 4;
       
@@ -268,7 +267,7 @@ void keyPressed(){
     if (key == 'V' || key == 'v'){
       
       heroe.selDragon(3);
-      //escJuego.selEsc(3);
+      escJuego1.selEsc(3);
       escenario = 4;
      }
   }

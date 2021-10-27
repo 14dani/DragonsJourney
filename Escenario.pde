@@ -25,6 +25,29 @@ class Escenario{
     fondo.resize(width,height);
   }
   
+  public Escenario(int sel){
+    //if(sel == 1) {
+    //  img = loadImage("Escenario- 8.png");
+    //  img.resize(width,height);
+      
+
+    //}
+    //else if(sel == 2) {
+    //  img = loadImage("escenario--6.png");
+    //  img.resize(width,height);
+      
+
+    //}
+    // else if(sel == 3) {
+    //  img = loadImage("Escenario- 7.png");
+    //  img.resize(width,height);
+      
+
+    // }
+       
+  
+  }
+  
   //Constructor para elementos
   public Escenario(PImage imagen, PVector posicion){ 
     pos1 = posicion;
@@ -51,7 +74,8 @@ class Escenario{
       
 
      }
-    
+    fondo = img;
+    fondo.resize(width,height);
     
   }
   
