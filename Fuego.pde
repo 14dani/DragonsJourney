@@ -2,8 +2,6 @@ class Fuego {
   
   PImage imgFuego;
   PVector loc;
-  float angulo;
-  float radio;
   boolean Valido;
   float dif, vel, dmg;
   int _clase;
@@ -43,7 +41,15 @@ class Fuego {
   image(imgFuego, loc.x, loc.y);
   }
    void mover() {
-   loc.x += vel;
+    loc.x += vel;
+    loc.y = 1;
+    
+    if (dist(loc.x, loc.y, width/2, height/2) < 20)
+      Valido = false;
+  
+   
+   if (dist(loc.x, loc.y, width/2, height/2) < 20)
+      Valido = false;
     
   }
   PVector getPosFuego() {

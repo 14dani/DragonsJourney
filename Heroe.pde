@@ -47,6 +47,38 @@ class Heroe{
   imageMode(CENTER);
   image(img, loc.x, loc.y);
   
+  for (int x=0; x<fuegos.size(); x++) {
+      Fuego aux = fuegos.get(x);
+      aux.mover();
+      aux.dibujar();
+      
+      if (!aux.esValido())
+        fuegos.remove(x);
+    }
+     textSize(15);
+    fill(255);
+    textAlign(LEFT);
+    text("HP: "+vida+"%", 20,20);
+    
+  
+  }
+  void disparar() {
+    Fuego nueva = new Fuego(1);
+    fuegos.add(nueva);
+  }
+  //-------- falta la pos del villano
+  boolean fuegoEnemigo(PVector posEnemigo) {
+    for (int x=0; x<fuegos.size(); x++) {
+      Fuego aux = fuegos.get(x);
+      if (aux.getPosFuego().dist(posEnemigo) < 15) {
+        fuegos.remove(x);
+        return true;
+      }
+    }
+    return false;
+  }
+  void setPos(PVector posicion) {
+    loc = posicion;
   }
   PVector getPosDragon() {
     return loc;

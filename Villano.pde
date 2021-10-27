@@ -51,5 +51,17 @@ class Villano{
     imageMode(CENTER);
     image(imagenMago, pos.x, pos.y);
   }
+  
+  // _____________________________ funciones 
+  
+    PVector getPosVlln() {
+    return pos;
+  }
+  
+  void setPos (PVector posicion) {
+   pos = posicion; 
+    
+  }
+  
 
 }

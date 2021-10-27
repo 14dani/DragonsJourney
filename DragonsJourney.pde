@@ -29,6 +29,7 @@ int sel;
 //--------------------------Balas 
 ArrayList<Escenario> estrellas;
 ArrayList<Fuego> FuegoDragon;
+ArrayList<Nube> nubesEsc3;
 
 
 //__________________________Heroe
@@ -40,7 +41,7 @@ float angulo;
 Villano vlln;
 
 
-
+Nube[] clouds = new Nube[5];
 void setup() {
   
   //size(1920,1080);
@@ -64,6 +65,13 @@ void setup() {
   escJuego = new Escenario(loadImage("escenario--6.png"));
   
   //Fondo de estrellas____________
+  
+  for (int index=0; index < clouds.length; index++) {
+    println(index);
+    clouds[index] = new Nube();
+    clouds[index].Nube = loadImage("Nube.png");
+  }
+    
   estrellas = new ArrayList<Escenario>();
   
   for (int i = 0; i < 10; i++){
@@ -145,8 +153,6 @@ void escJuego() {
     //____________________________________________________Heroe
     heroe.moverYdibujo(mouseY, mouseX);
     heroe.getPosDragon();
-    heroe.getVida();
-    text("vidas : " + heroe.getVida(), width/7, 30);
     
     
     //____________________________________________________Villano
@@ -210,7 +216,7 @@ void keyPressed(){
   }
   if (key == ' ')  {
     if (escenario == 4) {
-      
+      heroe.disparar();
     } 
   }
   
