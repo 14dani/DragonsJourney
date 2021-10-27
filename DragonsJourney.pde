@@ -31,11 +31,13 @@ ArrayList<Escenario> estrellas;
 ArrayList<Fuego> FuegoDragon;
 
 
-
+//__________________________Heroe
 Heroe heroe;
 float angulo;
 
-Villano vlln, vlln1;
+
+//___________________________Villano
+Villano vlln;
 
 
 
@@ -70,17 +72,20 @@ void setup() {
   }
   //___________________________________
   
+  escSeleccion = new Escenario(loadImage("Screenshot (384).png"));
+  
+  escGameOver = new Escenario(loadImage("Screenshot (385).png"));
+  
+  
+  
+  //___________________________________Heroe
   heroe = new Heroe();
   heroe.selDragon(1);
   
   
+  //___________________________________Villano
+  vlln = new Villano(int(random(0,4)), random(-1, 2), random(-5,0));
   
-  vlln = new Villano(int(random(0,4)), 0, -4);
-  vlln1 = new Villano(int(random(0,4)));
-  
-  escSeleccion = new Escenario(loadImage("Screenshot (384).png"));
-  
-  escGameOver = new Escenario(loadImage("Screenshot (385).png"));
 }
 
 
@@ -92,19 +97,19 @@ void escPortada (){
   playJ.pause();
   
   playI.play();
-
-
 }
+
 
 void escIntro (){
   //botones de seguir
 }
 
+
 void escSeleccion (){
   // investigar lo de la selección de personaje 
   sel = 0;
-
 }
+
 
 void escGameOver (){
   escGameOver.display();
@@ -135,15 +140,19 @@ void escJuego() {
       tmp.moverEstrella();
       //_______________________________________________________
     }
-  
+    
+    
+    //____________________________________________________Heroe
     heroe.moverYdibujo(mouseY, mouseX);
     heroe.getPosDragon();
     heroe.getVida();
     text("vidas : " + heroe.getVida(), width/7, 30);
     
+    
+    //____________________________________________________Villano
     vlln.mover();
     
-    //vlln1.movimientoSemicircular();
+    
     //------------------- funciones que se relacionana con mago x dragon
     //If vida de mago es == 0 
     //float ganarHechizo() 
@@ -155,9 +164,7 @@ void escJuego() {
     //      //  playerDeath.trigger();
     //      }
     //    } 
-    
   
-
 }
 
 
