@@ -8,6 +8,22 @@ class Escenario{
     vel = new PVector(-10,10);
   
   }
+  void selEsc(int _sel) {
+    if(_sel == 1) {
+      imgn = loadImage("Escenario 6.png");
+
+    }
+    else if(_sel == 2) {
+      imgn = loadImage("Escenario 7.png");
+
+    }
+     else if(_sel == 3) {
+      imgn = loadImage("Escenario 8.png");
+
+     }
+    
+    
+  }
   
   public Escenario(PImage bkgrd)
     //  if(_sel == 1) {

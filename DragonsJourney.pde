@@ -80,7 +80,7 @@ void setup() {
   }
   //___________________________________
   
-  escSeleccion = new Escenario(loadImage("Screenshot (384).png"));
+  escSeleccion = new Escenario(loadImage("Escenario-3.png"));
   
   escGameOver = new Escenario(loadImage("Screenshot (385).png"));
   
@@ -105,6 +105,7 @@ void escPortada (){
   playJ.pause();
   
   playI.play();
+  playI.loop();
 }
 
 
@@ -135,6 +136,7 @@ void escJuego() {
     escJuego.display();
     playI.pause();
     playJ.play();
+    playJ.loop();
     
     //_______________________________________________________Estrellas
     for (int i = 0; i < estrellas.size(); i++){
@@ -206,12 +208,17 @@ void keyPressed(){
   if (escenario == 3) {
     if (key == 's' || key == 'S') {
       heroe.selDragon(1);
+      //Fuego.selFuego(1);
+      //Escenario.selEsc(1);
+      escenario = 4;
     }
     if (key == 'E' || key == 'e'){
       heroe.selDragon(2);
+      escenario = 4;
     }
     if (key == 'V' || key == 'v'){
       heroe.selDragon(3);
+      escenario = 4;
      }
   }
   if (key == ' ')  {
