@@ -41,6 +41,11 @@ float angulo;
 //___________________________Villano
 Villano vlln;
 
+//___________________________Ataques
+ArrayList<Ataque> ataques;
+long instanteAtaque;
+int intervaloAtaque;
+
 
 Nube[] clouds = new Nube[5];
 
@@ -99,6 +104,8 @@ void setup() {
   
   //___________________________________Villano
   vlln = new Villano(int(random(0,4)), random(-1, 2), random(-5,0));
+  
+  ataques = new ArrayList<Ataque>();
   
 }
 
@@ -168,6 +175,25 @@ void escJuego(){
   //____________________________________________________Villano
   vlln.mover();
   
+  //Ataques de mago a dragon
+  //  for(int x=0; x<ataques.size(); x++){
+  //    Ataque tmp = ataques.get(x);
+  //    //tmp.dibujar();
+  //    tmp.mover();
+      
+      
+  //    if(dragon.getPos().dist(tmp.getPos()) <30 && tmp.isPlaying()){
+  //      explosiones.add(new Explosion(tmp.getPos())));
+  //      tmp.quitar();
+  //      personaje.quitarVida();
+  //    }
+      
+  //    //revisa si los asteroides salieron de la pantalla
+  //    if (!tmp.isPlaying()){
+  //    asteroides.remove(x);
+  //  }
+  //}
+  
   
   //------------------- funciones que se relacionana con mago x dragon
   //If vida de mago es == 0 
@@ -180,6 +206,24 @@ void escJuego(){
   //      //  playerDeath.trigger();
   //      }
   //    } 
+  
+   //Sección de niveles
+    
+    
+    //
+    
+    //Ataques de mago a dragon
+    for (int x=0; x < ataques.size(); x++){
+    Ataque tmp = ataques.get(x);
+    tmp.mover();
+  }
+    
+    if (millis() - instanteAtaque > intervaloAtaque) {
+    PVector aux = vlln.getPos();
+    Ataque nuevo = new Ataque(loadImage("AtaqueRojo.png"), aux.x, aux.y);
+    ataques.add(nuevo);
+    instanteAtaque = millis();
+  }
 
 }
 
@@ -247,6 +291,8 @@ void keyPressed(){
   }
    else if(key == '4'){
     escenario = 4;
+    instanteAtaque = millis();
+    intervaloAtaque = 5000;
   }
   else if(key == '5'){
     escenario = 5;

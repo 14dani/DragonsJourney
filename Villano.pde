@@ -54,7 +54,7 @@ class Villano{
   
   // _____________________________ funciones 
   
-    PVector getPosVlln() {
+    PVector getPos() {
     return pos;
   }
   
