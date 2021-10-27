@@ -24,14 +24,17 @@ class Heroe{
   void selDragon(int _sel) {
     if(_sel == 1) {
       img = loadImage("Saphira.png");
+      img.resize(250, 163);
       vel=1; 
     }
     else if(_sel == 2) {
       img = loadImage("Eldest.png");
+      img.resize(300, 195);
       vel=.75;
     }
      else if(_sel == 3) {
       img = loadImage("Vervada.png");
+      img.resize(300, 195);
       vel=1.25;
      }
    }

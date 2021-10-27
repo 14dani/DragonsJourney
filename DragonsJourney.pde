@@ -74,19 +74,12 @@ void setup() {
 
   
   
-  //Fondo de estrellas____________
+  //Fondo de nubes escenario 3____________
   
   for (int index=0; index < clouds.length; index++) {
     println(index);
     clouds[index] = new Nube();
     clouds[index].Nube = loadImage("Nube.png");
-  }
-    
-  estrellas = new ArrayList<Escenario>();
-  
-  for (int i = 0; i < 10; i++){
-    Escenario nuevo =  new Escenario();
-    estrellas.add(nuevo);
   }
   //___________________________________
   
@@ -102,9 +95,10 @@ void setup() {
   
   
   //___________________________________Villano
-  vlln = new Villano(int(random(0,4)), random(-1, 2), random(-5,0));
+  vlln = new Villano(3, random(-1, 2), random(-5,0));
   
   ataques = new ArrayList<Ataque>();
+  
   
 }
 
@@ -256,12 +250,16 @@ void keyPressed(){
       escJuego1.selEsc(1);
       //Fuego.selFuego(1);
       escenario = 4;
+      instanteAtaque = millis();
+      intervaloAtaque = 5000;
       
     }
     if (key == 'E' || key == 'e'){
       escJuego1.selEsc(2);
       heroe.selDragon(2);
       escenario = 4;
+      instanteAtaque = millis();
+      intervaloAtaque = 5000;
       
     }
     if (key == 'V' || key == 'v'){
@@ -269,6 +267,8 @@ void keyPressed(){
       heroe.selDragon(3);
       escJuego1.selEsc(3);
       escenario = 4;
+      instanteAtaque = millis();
+      intervaloAtaque = 5000;
      }
   }
   
@@ -291,8 +291,8 @@ void keyPressed(){
   }
    else if(key == '4'){
     escenario = 4;
-    instanteAtaque = millis();
-    intervaloAtaque = 5000;
+    //instanteAtaque = millis();
+    //intervaloAtaque = 5000;
   }
   else if(key == '5'){
     escenario = 5;

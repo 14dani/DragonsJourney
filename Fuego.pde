@@ -9,8 +9,9 @@ class Fuego {
   
   
   public Fuego() {
-    loc = new PVector(_clase,((height/10)-height));
-    Valido = true;
+    //loc = new PVector (x, y);
+    //vel = new PVector (random(-4,-1), random(-5,5));
+    //imgFuego = imagen;
     
   }
   void selFuego(int _sel) {
@@ -47,7 +48,7 @@ class Fuego {
   }
    void mover() {
     loc.x += vel;
-    loc.y = height/2;
+    loc.y = 0;
     
     if (dist(loc.x, loc.y, width/2, height/2) < 20)
       Valido = false;
