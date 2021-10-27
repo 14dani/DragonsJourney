@@ -70,7 +70,8 @@ void setup() {
   }
   //___________________________________
   
-  heroe = new Heroe(3);
+  heroe = new Heroe();
+  heroe.selDragon(1);
   
   
   
@@ -191,23 +192,18 @@ void draw() {
 void keyPressed(){
   if (escenario == 3) {
     if (key == 's' || key == 'S') {
-      sel = 1;
+      heroe.selDragon(1);
     }
     if (key == 'E' || key == 'e'){
-      sel = 2;
+      heroe.selDragon(2);
     }
     if (key == 'V' || key == 'v'){
-      sel = 3;
+      heroe.selDragon(3);
      }
   }
   if (key == ' ')  {
-    if (escenario == 4 ||escenario == 5 || escenario == 6) {
-      if (millis() - instanteDisparo > intervaloDisparo) {
-        instanteDisparo = millis();
-        Fuego nuevo = new Fuego(1);
-        FuegoDragon.add(nuevo);
-        //disparo.trigger();
-      }
+    if (escenario == 4) {
+      
     } 
   }
   
