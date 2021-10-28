@@ -67,8 +67,14 @@ class Fuego {
     //scale(escala);
     //circle(0,0,5);
     //popMatrix();
+  
+  pushMatrix();
+  translate(loc.x, loc.y);
+  rotate(radians(r));
   imageMode(CENTER);
-  image(imgFuego, loc.x, loc.y);
+  image(imgFuego, 0, 0);
+  popMatrix();
+  r+=5;
   
   
   }

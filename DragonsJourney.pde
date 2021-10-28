@@ -194,6 +194,7 @@ void escJuego(){
     if (heroe.getPosDragon().dist(tmp.getPos()) < 150 && tmp.isPlaying()){
       explosiones.add(new Explosion(tmp.getPos()));
       tmp.quitar();
+      println("colision");
       //heroe.quitarVida();
     }
     
@@ -202,6 +203,15 @@ void escJuego(){
     }
   
   }
+  
+  for (int x=0; x<explosiones.size(); x++) {
+        Explosion tmp = explosiones.get(x);
+        if (tmp.isActive()) {
+          tmp.dibujar();
+        }
+        else
+        explosiones.remove(x);
+      }
     
     if (millis() - instanteAtaque > intervaloAtaque) {
     PVector aux = vlln.getPos();
@@ -299,14 +309,8 @@ void keyPressed(){
       escenario = 4;
       instanteAtaque = millis();
       intervaloAtaque = 5000;
-      for (int x=0; x<explosiones.size(); x++) {
-        Explosion tmp = explosiones.get(x);
-        if (tmp.isActive()) {
-          tmp.dibujar();
-        }
-        else
-        explosiones.remove(x);
-      }
+      
+      
       
      }
   }

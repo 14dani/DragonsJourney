@@ -23,7 +23,7 @@ class SpriteSheet {
 
     for (int i = 0; i < imageCount; i++) {
       // Use nf() to number format 'i' into four digits
-      String filename = imagePrefix + nf(i, 5) + "."+imageFormat;
+      String filename = imagePrefix + nf(i, 4) + "."+imageFormat;
       images[i] = loadImage(filename);
     }
   }
