@@ -22,16 +22,13 @@ class Villano{
     
     if(tipo == 1) {
       imagenMago = loadImage("MagoRojo.png");
-      
     }
     else if(tipo == 2) {
       imagenMago = loadImage("MagoMorado.png");
-      
     }
      else if(tipo == 3) {
       imagenMago = loadImage("MagoCyan.png");
-      
-     }
+    }
   
   }
   
@@ -54,7 +51,7 @@ class Villano{
   
   // _____________________________ funciones 
   
-    PVector getPos() {
+  PVector getPos() {
     return pos;
   }
   

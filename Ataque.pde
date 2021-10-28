@@ -10,6 +10,8 @@ class Ataque{
     
     pos = new PVector (x, y);
     vel = new PVector (random(-4,-1), random(-5,5));
+    isAlive = true;
+    
     if(tipo == 1)
     img = loadImage("AtaqueRojo.png");
     else if(tipo == 2)
@@ -42,6 +44,19 @@ class Ataque{
     imageMode(CENTER);
     image(img, pos.x, pos.y);
   }
+  
+  boolean isPlaying() {
+    return isAlive;
+  }
+  
+  void quitar() {
+    isAlive = false;
+  }
+  
+  PVector getPos() {
+    return pos;
+  }
+  
 
 
 

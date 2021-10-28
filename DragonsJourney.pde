@@ -49,6 +49,9 @@ ArrayList<Ataque> ataques;
 long instanteAtaque;
 int intervaloAtaque;
 
+//___________________________Explosiones
+ArrayList<Explosion> explosiones;
+
 
 Nube[] clouds = new Nube[5];
 
@@ -104,6 +107,7 @@ void setup() {
   vlln = new Villano(tipoVillano, random(-1, 2), random(-5,0));
   
   ataques = new ArrayList<Ataque>();
+  explosiones = new ArrayList<Explosion>();
   
   FuegoDragon = new ArrayList<Fuego>();
   
@@ -169,28 +173,6 @@ void escJuego(){
     
     
   
-  
-  
-  //Ataques de mago a dragon
-  //  for(int x=0; x<ataques.size(); x++){
-  //    Ataque tmp = ataques.get(x);
-  //    //tmp.dibujar();
-  //    tmp.mover();
-      
-      
-  //    if(dragon.getPos().dist(tmp.getPos()) <30 && tmp.isPlaying()){
-  //      explosiones.add(new Explosion(tmp.getPos())));
-  //      tmp.quitar();
-  //      personaje.quitarVida();
-  //    }
-      
-  //    //revisa si los asteroides salieron de la pantalla
-  //    if (!tmp.isPlaying()){
-  //    asteroides.remove(x);
-  //  }
-  //}
-  
-  
   //------------------- funciones que se relacionana con mago x dragon
   //If vida de mago es == 0 
   //float ganarHechizo() 
@@ -203,15 +185,22 @@ void escJuego(){
   //      }
   //    } 
   
-   //Sección de niveles
-    
-    
-    //
-    
-    //Ataques de mago a dragon
-    for (int x=0; x < ataques.size(); x++){
+
+//Ataques de mago a dragon
+  for (int x=0; x < ataques.size(); x++){
     Ataque tmp = ataques.get(x);
     tmp.mover();
+    
+    if (heroe.getPosDragon().dist(tmp.getPos()) < 150 && tmp.isPlaying()){
+      explosiones.add(new Explosion(tmp.getPos()));
+      tmp.quitar();
+      //heroe.quitarVida();
+    }
+    
+    if(!tmp.isPlaying()){
+      ataques.remove(x);
+    }
+  
   }
     
     if (millis() - instanteAtaque > intervaloAtaque) {
@@ -220,6 +209,7 @@ void escJuego(){
     ataques.add(nuevo);
     instanteAtaque = millis();
   }
+  
   
   //____________________________________________________Villano
   vlln.mover();
@@ -271,6 +261,16 @@ void keyPressed(){
       escenario = 4;
       instanteAtaque = millis();
       intervaloAtaque = 5000;
+      for (int x=0; x<explosiones.size(); x++) {
+        Explosion tmp = explosiones.get(x);
+        if (tmp.isActive()) {
+          tmp.dibujar();
+        }
+        else
+        explosiones.remove(x);
+      }
+      
+      
     }
     
     if (key == 'E' || key == 'e'){
@@ -280,6 +280,15 @@ void keyPressed(){
       escenario = 4;
       instanteAtaque = millis();
       intervaloAtaque = 5000;
+      for (int x=0; x<explosiones.size(); x++) {
+        Explosion tmp = explosiones.get(x);
+        if (tmp.isActive()) {
+          tmp.dibujar();
+        }
+        else
+        explosiones.remove(x);
+      }
+      
       
     }
     if (key == 'V' || key == 'v'){
@@ -290,6 +299,15 @@ void keyPressed(){
       escenario = 4;
       instanteAtaque = millis();
       intervaloAtaque = 5000;
+      for (int x=0; x<explosiones.size(); x++) {
+        Explosion tmp = explosiones.get(x);
+        if (tmp.isActive()) {
+          tmp.dibujar();
+        }
+        else
+        explosiones.remove(x);
+      }
+      
      }
   }
   

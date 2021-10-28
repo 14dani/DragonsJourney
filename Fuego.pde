@@ -6,11 +6,14 @@ class Fuego {
   float dif, dmg;
   int _clase;
   
+  float r;
  
   
   
   public Fuego(char var, float x, float y) {
-    loc = new PVector (x, y);
+    loc = new PVector (x+120, y-46);
+    r=0;
+    
     
     if (var == 's'){
       imgFuego = loadImage("Hechizo-Saphira.png");
@@ -66,6 +69,8 @@ class Fuego {
     //popMatrix();
   imageMode(CENTER);
   image(imgFuego, loc.x, loc.y);
+  
+  
   }
   
   
