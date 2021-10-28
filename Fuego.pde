@@ -1,33 +1,35 @@
 class Fuego {
   
   PImage imgFuego;
-  PVector loc;
+  PVector loc,vel, velS, velE, velV;
   boolean Valido;
-  float dif, vel, dmg;
+  float dif, dmg;
   int _clase;
  
   
   
-  public Fuego() {
-    //loc = new PVector (x, y);
-    //vel = new PVector (random(-4,-1), random(-5,5));
-    //imgFuego = imagen;
+  public Fuego(PImage imagen, float x, float y) {
+    loc = new PVector (x, y);
+    velS = new PVector (1, 1);
+    velE = new PVector (.75, .75);
+    velV = new PVector (1.5, 1.5);
+    imgFuego = imagen;
     
   }
-  void selFuego(int _sel) {
+  void selFuegos(int _sel) {
     if(_sel == 1) {
       imgFuego = loadImage("Hechizo-Saphira.png");
-      vel=1;
+      vel = velS;
       dmg = 1;
     }
     else if(_sel == 2) {
       imgFuego = loadImage("Hechizo-Eldest.png");
-      vel=.75;
+      vel = velE;
       dmg= 1.5;
     }
      else if(_sel == 3) {
       imgFuego = loadImage("Hechizo-Vervada.png");
-      vel=1.25;
+      vel = velV;
       dmg = .75;
      }
     
@@ -47,8 +49,7 @@ class Fuego {
   image(imgFuego, loc.x, loc.y);
   }
    void mover() {
-    loc.x += vel;
-    loc.y = 0;
+    loc.add(vel);
     
     if (dist(loc.x, loc.y, width/2, height/2) < 20)
       Valido = false;

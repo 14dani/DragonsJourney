@@ -36,6 +36,7 @@ ArrayList<Nube> nubesEsc3;
 //__________________________Heroe
 Heroe heroe;
 float angulo;
+Fuego FuegoDragonD;
 
 
 //___________________________Villano
@@ -248,7 +249,7 @@ void keyPressed(){
       
       heroe.selDragon(1);
       escJuego1.selEsc(1);
-      //Fuego.selFuego(1);
+      FuegoDragon.selFuegos(1);
       escenario = 4;
       instanteAtaque = millis();
       intervaloAtaque = 5000;
