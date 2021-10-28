@@ -4,16 +4,16 @@ class Explosion {
   PVector loc;
   boolean active;
   
-  public Explosion(int tipo, PVector _loc) {
+  public Explosion(char tipo, PVector _loc) {
     
-    if(tipo == 1) {
-      ani = new SpriteSheet("ER_", 7, "png");
+    if(tipo == 's') {
+      ani = new SpriteSheet("FS_", 7, "png");
     }
-    else if(tipo == 2) {
-      ani = new SpriteSheet("EM_", 7, "png");
+    else if(tipo == 'e') {
+      ani = new SpriteSheet("FE_", 7, "png");
     }
-     else if(tipo == 3) {
-      ani = new SpriteSheet("EC_", 7, "png");
+     else if(tipo == 'v') {
+      ani = new SpriteSheet("FV_", 7, "png");
     }
     
     loc = _loc;

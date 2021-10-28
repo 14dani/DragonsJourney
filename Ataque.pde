@@ -4,6 +4,7 @@ class Ataque{
   PVector pos;
   PVector vel;
   boolean isAlive;
+  float r;
   
 
   public Ataque(int tipo, float x, float y){
@@ -18,31 +19,35 @@ class Ataque{
     img = loadImage("AtaqueMorado.png");
     else if(tipo == 3)
     img = loadImage("AtaqueCyan.png");
+    
+    r=0;
   
   }
   
   
   //Rotar ataque
-  //void dibujar() {
-    
-  //  imageMode(CENTER);
-  //  pushMatrix();
-  //  translate(pos.x, pos.y);
-    
-  //  image(img,0,0);
-  //  popMatrix();
-  //}
+  void dibujar() {
+     pushMatrix();
+     translate(pos.x, pos.y);
+     rotate(radians(r));
+     imageMode(CENTER);
+     image(img, 0, 0);
+     popMatrix();
+     r+=7;
+  }
   
   
   void mover() {
-    //pos.add(vel);  //x += vx; //y += vy;
-    //vel.set(random(-4,-1), random(-5,5));
+    
     pos.add(vel);  //x += vx; //y += vy;
+    //if (pos.x <= 0 || pos.x >= width) {
+    //  vel.x *= -1;
+    //}
     
+    if (pos.y <= 0 || pos.y >= height) {
+      vel.y *= -1;
+    }
     
-    
-    imageMode(CENTER);
-    image(img, pos.x, pos.y);
   }
   
   boolean isPlaying() {

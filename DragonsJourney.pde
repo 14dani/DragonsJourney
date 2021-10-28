@@ -102,9 +102,9 @@ void setup() {
   
   
   //___________________________________Villano
-  tipoVillano = 2;
+  tipoVillano = int(random(2,3));
   
-  vlln = new Villano(tipoVillano, random(-1, 2), random(-5,0));
+  vlln = new Villano(tipoVillano, random(-1, -5), random(-5,0));
   
   ataques = new ArrayList<Ataque>();
   explosiones = new ArrayList<Explosion>();
@@ -189,10 +189,11 @@ void escJuego(){
 //Ataques de mago a dragon
   for (int x=0; x < ataques.size(); x++){
     Ataque tmp = ataques.get(x);
+    tmp.dibujar();
     tmp.mover();
     
     if (heroe.getPosDragon().dist(tmp.getPos()) < 150 && tmp.isPlaying()){
-      explosiones.add(new Explosion(tmp.getPos()));
+      explosiones.add(new Explosion(tipoVillano, tmp.getPos()));
       tmp.quitar();
       println("colision");
       //heroe.quitarVida();
@@ -271,14 +272,7 @@ void keyPressed(){
       escenario = 4;
       instanteAtaque = millis();
       intervaloAtaque = 5000;
-      for (int x=0; x<explosiones.size(); x++) {
-        Explosion tmp = explosiones.get(x);
-        if (tmp.isActive()) {
-          tmp.dibujar();
-        }
-        else
-        explosiones.remove(x);
-      }
+      
       
       
     }
@@ -290,14 +284,7 @@ void keyPressed(){
       escenario = 4;
       instanteAtaque = millis();
       intervaloAtaque = 5000;
-      for (int x=0; x<explosiones.size(); x++) {
-        Explosion tmp = explosiones.get(x);
-        if (tmp.isActive()) {
-          tmp.dibujar();
-        }
-        else
-        explosiones.remove(x);
-      }
+      
       
       
     }
@@ -346,15 +333,7 @@ void keyPressed(){
   }
   
   
-  if(key == CODED){
-    if(keyCode == LEFT){
-      angulo += 4;
-    }
-    else if(keyCode == RIGHT){
-      angulo -= 4;
-    
-    }
-  }
+  
   
 
 }
