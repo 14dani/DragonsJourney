@@ -11,14 +11,11 @@ class Heroe{
   public Heroe(){
     //_Clase = 2;
     //reset();
-    
     fuegos = new ArrayList<Fuego>();
     loc = new PVector();
     vida = 100;
     hechizos = 0;
     vel = 0;
-    
-    
   }
   
   void selDragon(int _sel) {
@@ -41,29 +38,26 @@ class Heroe{
   
   
   void moverYdibujo( float _pMouseY, float _pMouseX){
-  
-  loc.y = _pMouseY;
-  loc.x = _pMouseX;
-  
-  imageMode(CENTER);
-  image(img, loc.x, loc.y);
-  
-  
-  for (int x=0; x<fuegos.size(); x++) {
-      Fuego aux = fuegos.get(x);
-      aux.mover();
-      aux.dibujar();
-      
-      if (!aux.esValido())
-        fuegos.remove(x);
-    }
-     textSize(15);
-    fill(255);
-    textAlign(LEFT);
-    text("HP: "+vida+"%", 20,20);
+    loc.y = _pMouseY;
+    loc.x = _pMouseX;
+    imageMode(CENTER);
+    image(img, loc.x, loc.y);
     
-  
-  }
+    //for (int x=0; x<fuegos.size(); x++) {
+    //  Fuego aux = fuegos.get(x);
+    //  aux.mover();
+    //  aux.dibujar();
+    //  if (!aux.esValido())
+    //    fuegos.remove(x);
+    //  }
+      textSize(15);
+      fill(255);
+      textAlign(LEFT);
+      text("HP: "+vida+"%", 20,20);
+   }
+   
+   
+   
   void disparar() {
     //Fuego nueva = new Fuego(1);
     //fuegos.add(nueva);

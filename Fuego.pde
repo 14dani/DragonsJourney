@@ -5,36 +5,55 @@ class Fuego {
   boolean Valido;
   float dif, dmg;
   int _clase;
+  
  
   
   
-  public Fuego(PImage imagen, float x, float y) {
+  public Fuego(char var, float x, float y) {
     loc = new PVector (x, y);
-    velS = new PVector (1, 1);
-    velE = new PVector (.75, .75);
-    velV = new PVector (1.5, 1.5);
-    imgFuego = imagen;
     
-  }
-  void selFuegos(int _sel) {
-    if(_sel == 1) {
+    if (var == 's'){
       imgFuego = loadImage("Hechizo-Saphira.png");
-      vel = velS;
+      imgFuego.resize(57, 57);
+      vel = new PVector (1, 0);
       dmg = 1;
     }
-    else if(_sel == 2) {
+    else if(var == 'e'){
       imgFuego = loadImage("Hechizo-Eldest.png");
-      vel = velE;
+      imgFuego.resize(57, 57);
+      vel = new PVector (.75, 0);
       dmg= 1.5;
     }
-     else if(_sel == 3) {
+    else if(var == 'v'){
       imgFuego = loadImage("Hechizo-Vervada.png");
-      vel = velV;
+      imgFuego.resize(57, 57);
+      vel = new PVector (1.5, 0);
       dmg = .75;
-     }
+    }
     
     
   }
+  
+  
+  //void selFuegos(int _sel) {
+  //  if(_sel == 1) {
+  //    imgFuego = loadImage("Hechizo-Saphira.png");
+  //    vel = velS;
+  //    dmg = 1;
+  //  }
+  //  else if(_sel == 2) {
+  //    imgFuego = loadImage("Hechizo-Eldest.png");
+  //    vel = velE;
+  //    dmg= 1.5;
+  //  }
+  //   else if(_sel == 3) {
+  //    imgFuego = loadImage("Hechizo-Vervada.png");
+  //    vel = velV;
+  //    dmg = .75;
+  //   }
+  // }
+  
+  
   
   void dibujar () {
     //float escala = map(radio, dif, 0, 1, 0);
@@ -48,29 +67,30 @@ class Fuego {
   imageMode(CENTER);
   image(imgFuego, loc.x, loc.y);
   }
-   void mover() {
+  
+  
+  void mover() {
     loc.add(vel);
+    if (dist(loc.x, loc.y, width/2, height/2) < 20)
+      Valido = false;
     
     if (dist(loc.x, loc.y, width/2, height/2) < 20)
       Valido = false;
-  
-   
-   if (dist(loc.x, loc.y, width/2, height/2) < 20)
-      Valido = false;
+    }
     
-  }
+    
   PVector getPosFuego() {
    return loc;
   }
   
-  void quitarFuego() {
-   Valido = false; 
-    
-  }
   
-  boolean esValido(){
-   return Valido;
-  }
+  //void quitarFuego() {
+  // Valido = false;¡
+  //}
+  
+  //boolean esValido(){
+  // return Valido;
+  //}
   
   
   

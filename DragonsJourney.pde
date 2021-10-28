@@ -36,10 +36,12 @@ ArrayList<Nube> nubesEsc3;
 //__________________________Heroe
 Heroe heroe;
 float angulo;
+char heroeSeleccionado;
 Fuego FuegoDragonD;
 
 
 //___________________________Villano
+int tipoVillano;
 Villano vlln;
 
 //___________________________Ataques
@@ -93,12 +95,17 @@ void setup() {
   //___________________________________Heroe
   heroe = new Heroe();
   heroe.selDragon(1);
+  heroeSeleccionado = 'S';
   
   
   //___________________________________Villano
-  vlln = new Villano(3, random(-1, 2), random(-5,0));
+  tipoVillano = 2;
+  
+  vlln = new Villano(tipoVillano, random(-1, 2), random(-5,0));
   
   ataques = new ArrayList<Ataque>();
+  
+  FuegoDragon = new ArrayList<Fuego>();
   
   
 }
@@ -161,13 +168,8 @@ void escJuego(){
   //_______________________________________________________
     
     
-  //____________________________________________________Heroe
-  heroe.moverYdibujo(mouseY, mouseX);
-  heroe.getPosDragon();
   
   
-  //____________________________________________________Villano
-  vlln.mover();
   
   //Ataques de mago a dragon
   //  for(int x=0; x<ataques.size(); x++){
@@ -214,10 +216,25 @@ void escJuego(){
     
     if (millis() - instanteAtaque > intervaloAtaque) {
     PVector aux = vlln.getPos();
-    Ataque nuevo = new Ataque(loadImage("AtaqueRojo.png"), aux.x, aux.y);
+    Ataque nuevo = new Ataque(tipoVillano, aux.x, aux.y);
     ataques.add(nuevo);
     instanteAtaque = millis();
   }
+  
+  //____________________________________________________Villano
+  vlln.mover();
+  
+  //Obtener la posicion del heroe para lanzar fuego
+  for (int x=0; x < FuegoDragon.size(); x++){
+    Fuego tmp = FuegoDragon.get(x);
+    tmp.dibujar();
+    tmp.mover();
+  }
+  
+  //____________________________________________________Heroe
+  heroe.moverYdibujo(mouseY, mouseX);
+  heroe.getPosDragon();
+  
 
 }
 
@@ -247,15 +264,17 @@ void keyPressed(){
   if (escenario == 3) {
     if (key == 's' || key == 'S') {
       
+      //Nivel 1
+      heroeSeleccionado = 's';
       heroe.selDragon(1);
       escJuego1.selEsc(1);
-      FuegoDragon.selFuegos(1);
       escenario = 4;
       instanteAtaque = millis();
       intervaloAtaque = 5000;
-      
     }
+    
     if (key == 'E' || key == 'e'){
+      heroeSeleccionado = 'e';
       escJuego1.selEsc(2);
       heroe.selDragon(2);
       escenario = 4;
@@ -265,6 +284,7 @@ void keyPressed(){
     }
     if (key == 'V' || key == 'v'){
       
+      heroeSeleccionado = 'v';
       heroe.selDragon(3);
       escJuego1.selEsc(3);
       escenario = 4;
@@ -276,7 +296,10 @@ void keyPressed(){
   
   if (key == ' ')  {
     if (escenario == 4) {
-      heroe.disparar();
+      //heroe.disparar();
+      PVector aux = heroe.getPosDragon();
+      Fuego nuevo = new Fuego(heroeSeleccionado,aux.x, aux.y);
+      FuegoDragon.add(nuevo);
     } 
   }
   

@@ -6,11 +6,16 @@ class Ataque{
   boolean isAlive;
   
 
-  public Ataque(PImage imagen, float x, float y){
+  public Ataque(int tipo, float x, float y){
     
     pos = new PVector (x, y);
     vel = new PVector (random(-4,-1), random(-5,5));
-    img = imagen;
+    if(tipo == 1)
+    img = loadImage("AtaqueRojo.png");
+    else if(tipo == 2)
+    img = loadImage("AtaqueMorado.png");
+    else if(tipo == 3)
+    img = loadImage("AtaqueCyan.png");
   
   }
   
