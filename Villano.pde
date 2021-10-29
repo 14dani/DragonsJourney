@@ -62,6 +62,12 @@ class Villano{
     if (ani.isFinished())
       active = false;
     popMatrix();
+    
+      textSize(15);
+      fill(255);
+      textAlign(RIGHT);
+      text("HP: "+vida+"%", width-20,20);
+    
   }
   
   
@@ -80,10 +86,7 @@ class Villano{
     //imageMode(CENTER);
     //image(imagenMago, pos.x, pos.y);
     
-    textSize(15);
-      fill(255);
-      textAlign(RIGHT);
-      text("HP: "+vida+"%", 20,20);
+
     
   }
   
