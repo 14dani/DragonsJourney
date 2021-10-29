@@ -87,7 +87,7 @@ void setup() {
   escJuego2 = new Escenario(sel);
   escJuego3 = new Escenario(sel);
   escJuego4 = new Escenario(sel);
-  escPortada = new Escenario(loadImage("Screenshot (386).png"));
+  escPortada = new Escenario(loadImage("Intro.png"));
   escIntro = new Escenario(loadImage("Screenshot (382).png"));
   cambiodeNivel = false;
 
@@ -173,10 +173,10 @@ void escGameOver (){
 //Nivel 1
 void escJuegoNIV1(){
   escJuego1.display();
-  textSize(15);
+  textSize(30);
   fill(255);
   textAlign(CENTER);
-  text("Nivel 1", width/2,20);
+  text("Nivel 1", width/2,50);
   playI.pause();
   playJ.play();
   //playJ.loop();
@@ -284,10 +284,10 @@ void escJuegoNIV1(){
 void escJuegoNIV2(){
   ataques.clear();
   escJuego2.display();
-  textSize(15);
+  textSize(30);
   fill(255);
   textAlign(CENTER);
-  text("Nivel 2", width/2,20);
+  text("Nivel 2", width/2,50);
   playI.pause();
   playJ.play();
   //playJ.loop();
@@ -401,10 +401,10 @@ void escJuegoNIV2(){
 void escJuegoNIV3(){
   ataques.clear();
   escJuego3.display();
-  textSize(15);
+  textSize(30);
   fill(255);
   textAlign(CENTER);
-  text("Nivel 3", width/2,20);
+  text("Nivel 3", width/2,50);
   playI.pause();
   playJ.play();
   //playJ.loop();
@@ -424,8 +424,7 @@ void escJuegoNIV3(){
       
       heroe.restarVida();
       if(heroe.getVida()==0){
-
-      escenario = 8;
+        escenario = 8;
       //  instant = millis();
         //escGameOver();
       //}
