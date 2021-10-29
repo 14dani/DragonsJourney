@@ -1,17 +1,21 @@
 class Heroe{
   
+  SpriteSheet ani;
   PImage img;
   PVector loc;
   float vel, ang, vida;
   float mover = 0;
   ArrayList<Fuego> fuegos;
+  ArrayList<HeroeAnimacion> dragon;
   int _Clase, hechizos;
+  boolean active;
   
   
   public Heroe(){
     //_Clase = 2;
     //reset();
     fuegos = new ArrayList<Fuego>();
+    dragon = new ArrayList<HeroeAnimacion>();
     loc = new PVector();
     vida = 100;
     hechizos = 0;
@@ -20,28 +24,33 @@ class Heroe{
   
   void selDragon(int _sel) {
     if(_sel == 1) {
-      img = loadImage("Saphira.png");
-      img.resize(250, 163);
+      ani = new SpriteSheet("HS_", 10, "png");
       vel=1; 
     }
     else if(_sel == 2) {
-      img = loadImage("Eldest.png");
-      img.resize(300, 195);
+      ani = new SpriteSheet("HE_", 10, "png");
       vel=.75;
     }
      else if(_sel == 3) {
-      img = loadImage("Vervada.png");
-      img.resize(300, 195);
+      ani = new SpriteSheet("HV_", 10, "png");
       vel=1.25;
      }
+    
+    active = true;
+    ani.loop();
+    ani.play();
    }
   
   
   void moverYdibujo( float _pMouseY, float _pMouseX){
     loc.y = _pMouseY;
     loc.x = _pMouseX;
+    pushMatrix();
     imageMode(CENTER);
-    image(img, loc.x, loc.y);
+    ani.display(loc.x, loc.y);
+    if (ani.isFinished())
+      active = false;
+    popMatrix();
     
     //for (int x=0; x<fuegos.size(); x++) {
     //  Fuego aux = fuegos.get(x);

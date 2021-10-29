@@ -63,6 +63,7 @@ void setup() {
   
   //size(1920,1080);
   fullScreen();
+  frameRate(10);
   
   minim = new Minim(this);
   

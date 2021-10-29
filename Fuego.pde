@@ -20,19 +20,19 @@ class Fuego {
     if (var == 's'){
       imgFuego = loadImage("Hechizo-Saphira.png");
       imgFuego.resize(57, 57);
-      vel = new PVector (1, 0);
+      vel = new PVector (15*1, 0);
       dmg = 1;
     }
     else if(var == 'e'){
       imgFuego = loadImage("Hechizo-Eldest.png");
       imgFuego.resize(57, 57);
-      vel = new PVector (.75, 0);
+      vel = new PVector (15*.75, 0);
       dmg= 1.5;
     }
     else if(var == 'v'){
       imgFuego = loadImage("Hechizo-Vervada.png");
       imgFuego.resize(57, 57);
-      vel = new PVector (1.5, 0);
+      vel = new PVector (15*1.5, 0);
       dmg = .75;
     }
     
@@ -76,7 +76,7 @@ class Fuego {
   imageMode(CENTER);
   image(imgFuego, 0, 0);
   popMatrix();
-  r+=7;
+  r+=25;
   
   
   }
