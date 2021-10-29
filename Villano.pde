@@ -85,12 +85,11 @@ class Villano{
     
     //imageMode(CENTER);
     //image(imagenMago, pos.x, pos.y);
-<<<<<<< HEAD
+
     
 
     
-=======
->>>>>>> parent of 7670310... Cambios
+
   }
   
   // _____________________________ funciones 

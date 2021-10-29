@@ -195,16 +195,16 @@ void escJuego(){
       
       heroe.restarVida();
       if(heroe.getVida()==0){
-<<<<<<< HEAD
+
       escenario = 5;
       //  instant = millis();
         //escGameOver();
       //}
-=======
+
         escenario = 5;
         escGameOver();
       }
->>>>>>> parent of 7670310... Cambios
+
     }
     
     if(!tmp.isPlaying()){
@@ -246,17 +246,16 @@ void escJuego(){
       fuegos.add(new FuegoAnimacion(heroeSeleccionado, tmp.getPosFuego()));
       tmp.quitar();
       
-<<<<<<< HEAD
-      vlln.restarVida();
-      if(nivel == 1){
-        if(vlln.getVida() == 0 && heroe.getVida() > 0){
-          nivel = 2;
-        }
-      }
-        
-=======
+
+      //vlln.restarVida();
+      //if(nivel == 1){
+      //  if(vlln.getVida() == 0 && heroe.getVida() > 0){
+      //    nivel = 2;
+      //  }
+      //}
+
       //heroe.quitarVida();
->>>>>>> parent of 7670310... Cambios
+
     }
     
     if(!tmp.isPlaying()){
@@ -280,7 +279,7 @@ void escJuego(){
   heroe.moverYdibujo(mouseY, mouseX);
   heroe.getPosDragon();
   
-<<<<<<< HEAD
+
   
   
   
@@ -406,8 +405,8 @@ void escJuego(){
   
   
   
-=======
->>>>>>> parent of 7670310... Cambios
+
+
 
 }
 
@@ -443,20 +442,9 @@ void keyPressed(){
       escJuego1.selEsc(1);
       escenario = 4;
       
-      if(nivel==1){
       instanteAtaque = millis();
       intervaloAtaque = 5000;
-      }
-      
-      else if(nivel==2){
-      instanteAtaque = millis();
-      intervaloAtaque = 2000;
-      }
-      
-      else if(nivel==3){
-      instanteAtaque = millis();
-      intervaloAtaque = 1000;
-      }
+     
       
       
       
@@ -467,20 +455,7 @@ void keyPressed(){
       escJuego1.selEsc(2);
       heroe.selDragon(2);
       escenario = 4;
-      if(nivel==1){
-      instanteAtaque = millis();
-      intervaloAtaque = 5000;
-      }
       
-      if(nivel==2){
-      instanteAtaque = millis();
-      intervaloAtaque = 2000;
-      }
-      
-      if(nivel==3){
-      instanteAtaque = millis();
-      intervaloAtaque = 1000;
-      }
       
       
       
@@ -494,20 +469,6 @@ void keyPressed(){
       instanteAtaque = millis();
       intervaloAtaque = 5000;
       
-      //if(nivel==1){
-      //instanteAtaque = millis();
-      //intervaloAtaque = 5000;
-      //}
-      
-      //if(nivel==2){
-      //instanteAtaque = millis();
-      //intervaloAtaque = 2000;
-      //}
-      
-      //if(nivel==3){
-      //instanteAtaque = millis();
-      //intervaloAtaque = 1000;
-      //}
       
       
       
