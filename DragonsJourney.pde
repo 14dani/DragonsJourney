@@ -282,7 +282,7 @@ void escJuegoNIV1(){
 }
 
 void escJuegoNIV2(){
-  ataques.clear();
+  
   escJuego2.display();
   textSize(15);
   fill(255);
@@ -419,7 +419,7 @@ void escJuegoNIV3(){
     tmp.mover();
     
     if (heroe.getPosDragon().dist(tmp.getPos()) < 150 && tmp.isPlaying()){
-      explosiones.add(new Explosion(tipoVillano, tmp.getPos()));
+      explosiones.add(new Explosion(1, tmp.getPos()));
       tmp.quitar();
       
       heroe.restarVida();
@@ -435,7 +435,7 @@ void escJuegoNIV3(){
     }
     
     if(!tmp.isPlaying()){
-      ataques.remove(x);
+      ataquesBoss.remove(x);
     }
   
   }
@@ -450,8 +450,8 @@ void escJuegoNIV3(){
       }
     
     if (millis() - instanteAtaqueBoss > intervaloAtaqueBoss) {
-    PVector aux = vlln1.getPos();
-    AtaqueBoss nuevo = new AtaqueBoss(1, aux.x, aux.y,random(-4,-1), random(-5,2));
+    PVector aux = vllnBoss.getPos();
+    AtaqueBoss nuevo = new AtaqueBoss(aux.x, aux.y,random(-4,-1), random(-5,2));
     ataquesBoss.add(nuevo);
     instanteAtaqueBoss = millis();
   }

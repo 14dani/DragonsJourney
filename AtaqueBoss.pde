@@ -6,18 +6,13 @@ class AtaqueBoss{
   boolean isAlive;
   float r;
   
-  public AtaqueBoss(int tipo, float x, float y, float vx, float vy){
+  public AtaqueBoss(float x, float y, float vx, float vy){
     
     pos = new PVector (x, y);
     vel = new PVector (vx, vy);
     isAlive = true;
-    
-    if(tipo == 1)
     img = loadImage("HR.png");
-    else if(tipo == 2)
-    img = loadImage("HM.png");
-    else if(tipo == 3)
-    img = loadImage("HC.png");
+    
     
     r=0;
   

@@ -16,7 +16,7 @@ class Boss{
     
     pos = new PVector (random(width*0.75, width), random(0, height));
     vel = new PVector(-1.9, -1.9);
-    instanteAnimacion = millis();
+    
     period = 1000;
     
     
@@ -30,8 +30,9 @@ class Boss{
   }
   
   void dibujar() {
-    active = true;
+    
     imageMode(CENTER);
+    image(imagenBoss, pos.x, pos.y);
     
   }
   
