@@ -1,4 +1,4 @@
-class Ataque{
+class AtaqueBoss{
   
   PImage img;
   PVector pos;
@@ -6,46 +6,24 @@ class Ataque{
   boolean isAlive;
   float r;
   
-
-  public Ataque(int tipo, float x, float y, float vx, float vy){
+  public AtaqueBoss(int tipo, float x, float y, float vx, float vy){
     
     pos = new PVector (x, y);
     vel = new PVector (vx, vy);
     isAlive = true;
     
     if(tipo == 1)
-    img = loadImage("AtaqueRojo.png");
+    img = loadImage("HR.png");
     else if(tipo == 2)
-    img = loadImage("AtaqueMorado.png");
+    img = loadImage("HM.png");
     else if(tipo == 3)
-    img = loadImage("AtaqueCyan.png");
+    img = loadImage("HC.png");
     
     r=0;
   
   }
   
-  //vx=random(-4,-1)
-  //vy=random(-5,5)
-  //ataque boss
-  //public Ataque(int tipo, float x, float y, float vx, float vy){
-    
-  //  pos = new PVector (x, y);
-  //  vel = new PVector (vx, vy);
-  //  isAlive = true;
-    
-  //  if(tipo == 1)
-  //  img = loadImage("HR.png");
-  //  else if(tipo == 2)
-  //  img = loadImage("HM.png");
-  //  else if(tipo == 3)
-  //  img = loadImage("HC.png");
-    
-  //  r=0;
-  
-  //}
-  
-  
-  //Rotar ataque
+//Rotar ataque
   void dibujar() {
      pushMatrix();
      translate(pos.x, pos.y);

@@ -1,93 +1,83 @@
-//class Boss {
-  
-//  PImage img;
-//  PVector pos;
-//  int vida;
-//  long instanteDisparo;
-//  int intervaloDisparo;
-//  ArrayList<Ataque> ataquesBoss;
+class Boss{
 
-//  public Boss() {
-//    img = loadImage("boss.png");
-//    ataquesBoss = new ArrayList<Ataque>();
-//    reset();
-//  }
+  PImage imagenBoss;
+  PVector pos;
+  PVector vel;
+  int tipoMago, hechizos;
+  float vida, ang, angulo, cx, cy;
+  SpriteSheet ani;
+  boolean active;
+  long instanteAnimacion;
+  int period;
   
-//  void reset() {
-//    vida = 30;
-//    ataquesBoss.clear();
-//    instanteDisparo = millis();
-//    intervaloDisparo = 1000;
-//  }
   
-//  void dibujar() {
-//    imageMode(CENTER);
-//    image(img, width/2, height/2);
-//    //pushMatrix();
-//    //translate(width/2, height/2);
-//    //rotate(radians(angRotacion));
-//    //image(img,0,0);
-//    //popMatrix();
+  
+  public Boss(){
     
-//    //dibuja las balas
-//    for (int x=0; x<ataquesBoss.size(); x++) {
-//      BalaBoss aux = ataquesBoss.get(x);
-//      aux.mover();
-//      aux.dibujar();
-      
-//      if (!aux.isPlaying())
-//        ataquesBoss.remove(x);
-//    }
-//  }
-  
-//  void mover() {
-//    pos.add(vel);  //x += vx; //y += vy;
+    pos = new PVector (random(width*0.75, width), random(0, height));
+    vel = new PVector(-1.9, -1.9);
+    instanteAnimacion = millis();
+    period = 1000;
     
-//    if (pos.x <= width*0.75 || pos.x >= width) {
-//      vel.x *= -1;
-//    }
     
-//    if (pos.y <= 0 || pos.y >= height) {
-//      vel.y *= -1;
-//    }
-//  }
+    //fuegos = new ArrayList<Fuego>();
+    
+    vida = 300;
+    hechizos = 0;
+    imagenBoss = loadImage("boss.png");
+
   
-//  void disparar() {
-//    if (millis() - instanteDisparo > intervaloDisparo) {
-//      instanteDisparo = millis();
-//      if (vida > 15) {
-//        float angTmp = random(0,360);
-//        BalaBoss nueva1 = new BalaBoss(angTmp);
-//        BalaBoss nueva2 = new BalaBoss(angTmp+180);
-//        ataquesBoss.add(nueva1);
-//        ataquesBoss.add(nueva2);
-//      }
-//      else {
-//        BalaBoss nueva1 = new BalaBoss(random(0,360));
-//        BalaBoss nueva2 = new BalaBoss(random(0,360));
-//        ataquesBoss.add(nueva1);
-//        ataquesBoss.add(nueva2);
-//      }
-//    }
-//  }
+  }
   
-//  boolean balaJefe(PVector pos) {
-//    for (int x=0; x<ataquesBoss.size(); x++) {
-//      BalaBoss aux = ataquesBoss.get(x);
-//      if (aux.getPos().dist(pos) < 15) {
-//        aux.quitarBala();
-//        return true;
-//      }
-//    }
-//    return false;
-//  }
+  void dibujar() {
+    active = true;
+    imageMode(CENTER);
+    
+  }
   
-//  void quitarVida() {
-//    vida -= 1;
-//    intervaloDisparo -= 70;
-//  }
   
-//  int getVida() {
-//    return vida;
-//  }
-//}
+  //___________________Movimiento Aleatoria(x,y) y De Arriba a Abajo(0, y)
+  void mover() {
+    pos.add(vel);  //x += vx; //y += vy;
+    
+    if (pos.x <= width*0.75 || pos.x >= width) {
+      vel.x *= -3;
+    }
+    
+    if (pos.y <= 0 || pos.y >= height) {
+      vel.y *= -3;
+    }
+    
+    //imageMode(CENTER);
+    //image(imagenMago, pos.x, pos.y);
+    
+    textSize(15);
+      fill(255);
+      textAlign(RIGHT);
+      text("HP: "+vida+"%", width-20,20);
+    
+  }
+  
+  // ___________ funciones 
+  
+  PVector getPos() {
+    return pos;
+  }
+  
+  float getVida() {
+   return vida; 
+  }
+  
+  void restarVida() {
+   vida-=15; 
+  }
+  
+  
+  void resetBoss() {
+    vida = 300;
+    instanteDisparo = millis();
+    intervaloDisparo = 1000;
+  }
+  
+
+}
