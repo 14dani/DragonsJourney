@@ -1,10 +1,10 @@
-class Explosion {
+class FuegoAnimacion {
   
   SpriteSheet ani;
   PVector loc;
   boolean active;
   
-  public Explosion(char tipo, PVector _loc) {
+  public FuegoAnimacion(char tipo, PVector _loc) {
     
     if(tipo == 's') {
       ani = new SpriteSheet("FS_", 7, "png");
@@ -23,13 +23,12 @@ class Explosion {
   }
   
   void dibujar() {
-    //pushMatrix();
+    pushMatrix();
     imageMode(CENTER);
     ani.display(loc.x, loc.y);
     if (ani.isFinished())
       active = false;
-     
-     //popMatrix();
+    popMatrix();
   }
   
   boolean isActive() {

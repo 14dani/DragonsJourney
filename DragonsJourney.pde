@@ -51,6 +51,7 @@ int intervaloAtaque;
 
 //___________________________Explosiones
 ArrayList<Explosion> explosiones;
+ArrayList<FuegoAnimacion> fuegos;
 
 
 Nube[] clouds = new Nube[5];
@@ -108,6 +109,7 @@ void setup() {
   
   ataques = new ArrayList<Ataque>();
   explosiones = new ArrayList<Explosion>();
+  fuegos = new ArrayList<FuegoAnimacion>();
   
   FuegoDragon = new ArrayList<Fuego>();
   
@@ -195,7 +197,7 @@ void escJuego(){
     if (heroe.getPosDragon().dist(tmp.getPos()) < 150 && tmp.isPlaying()){
       explosiones.add(new Explosion(tipoVillano, tmp.getPos()));
       tmp.quitar();
-      println("colision");
+      
       //heroe.quitarVida();
     }
     
@@ -225,12 +227,37 @@ void escJuego(){
   //____________________________________________________Villano
   vlln.mover();
   
+  
+  
   //Obtener la posicion del heroe para lanzar fuego
   for (int x=0; x < FuegoDragon.size(); x++){
     Fuego tmp = FuegoDragon.get(x);
     tmp.dibujar();
     tmp.mover();
+    
+    if (tmp.getPosFuego().dist(vlln.getPos()) < 150 && tmp.isPlaying()){
+      fuegos.add(new FuegoAnimacion(heroeSeleccionado, tmp.getPosFuego()));
+      tmp.quitar();
+      println("colision");
+      //heroe.quitarVida();
+    }
+    
+    if(!tmp.isPlaying()){
+      FuegoDragon.remove(x);
+    }
+  
   }
+  
+  for (int x=0; x<fuegos.size(); x++) {
+        FuegoAnimacion tmp = fuegos.get(x);
+        if (tmp.isActive()) {
+          tmp.dibujar();
+        }
+        else
+        fuegos.remove(x);
+      }
+    
+  
   
   //____________________________________________________Heroe
   heroe.moverYdibujo(mouseY, mouseX);
@@ -309,6 +336,7 @@ void keyPressed(){
       PVector aux = heroe.getPosDragon();
       Fuego nuevo = new Fuego(heroeSeleccionado,aux.x, aux.y);
       FuegoDragon.add(nuevo);
+      println(FuegoDragon.size());
     } 
   }
   

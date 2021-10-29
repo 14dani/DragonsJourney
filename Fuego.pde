@@ -5,6 +5,7 @@ class Fuego {
   boolean Valido;
   float dif, dmg;
   int _clase;
+  boolean isAlive;
   
   float r;
  
@@ -13,6 +14,7 @@ class Fuego {
   public Fuego(char var, float x, float y) {
     loc = new PVector (x+120, y-46);
     r=0;
+    isAlive = true;
     
     
     if (var == 's'){
@@ -89,19 +91,23 @@ class Fuego {
       Valido = false;
     }
     
+  boolean isPlaying() {
+    return isAlive;
+  }
+  
+  void quitar() {
+    isAlive = false;
+  } 
     
+  
   PVector getPosFuego() {
    return loc;
   }
   
   
-  //void quitarFuego() {
-  // Valido = false;¡
-  //}
   
-  //boolean esValido(){
-  // return Valido;
-  //}
+  
+  
   
   
   

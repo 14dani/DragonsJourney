@@ -23,13 +23,12 @@ class Explosion {
   }
   
   void dibujar() {
-    //pushMatrix();
+    pushMatrix();
     imageMode(CENTER);
     ani.display(loc.x, loc.y);
     if (ani.isFinished())
       active = false;
-     
-     //popMatrix();
+    popMatrix();
   }
   
   boolean isActive() {
