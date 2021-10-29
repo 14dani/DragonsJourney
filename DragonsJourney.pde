@@ -72,13 +72,14 @@ void setup() {
   playE = minim.loadFile("Dark Arabic Oriental (Full).mp3");
   escenario = 1;
   interval = 25000;
+  instant = millis();
   
   
   //______________________________________________________________________pantalla
  
   escPortada = new Escenario(loadImage("Screenshot (386).png"));
   escIntro = new Escenario(loadImage("Screenshot (382).png"));
-  escJuego1 = new Escenario(sel);
+  
 
   
   
@@ -111,7 +112,6 @@ void setup() {
   ataques = new ArrayList<Ataque>();
   explosiones = new ArrayList<Explosion>();
   fuegos = new ArrayList<FuegoAnimacion>();
-  
   FuegoDragon = new ArrayList<Fuego>();
   
   
@@ -130,26 +130,17 @@ void escPortada (){
 }
 
 
-void escIntro (){
-  //botones de seguir
-}
-
-
-void escSeleccion (){
-  // investigar lo de la selección de personaje 
-  sel = 0;
-}
-
 
 void escGameOver (){
   escGameOver.display();
   playJ.pause();
   playI.pause();
   playE.play();
-  playE.loop();
+  
   if (millis () - instant > interval) {
     playE.pause();
     escenario = 1;
+    
     
   }
 }
@@ -241,7 +232,7 @@ void escJuego(){
     if (tmp.getPosFuego().dist(vlln.getPos()) < 120 && tmp.isPlaying()){
       fuegos.add(new FuegoAnimacion(heroeSeleccionado, tmp.getPosFuego()));
       tmp.quitar();
-      println("colision");
+      
       //heroe.quitarVida();
     }
     

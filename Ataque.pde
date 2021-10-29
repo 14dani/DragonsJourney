@@ -24,6 +24,26 @@ class Ataque{
   
   }
   
+  //vx=random(-4,-1)
+  //vy=random(-5,5)
+  //ataque boss
+  public Ataque(int tipo, float x, float y, float vx, float vy){
+    
+    pos = new PVector (x, y);
+    vel = new PVector (vx, vy);
+    isAlive = true;
+    
+    if(tipo == 1)
+    img = loadImage("HR.png");
+    else if(tipo == 2)
+    img = loadImage("HM.png");
+    else if(tipo == 3)
+    img = loadImage("HC.png");
+    
+    r=0;
+  
+  }
+  
   
   //Rotar ataque
   void dibujar() {
