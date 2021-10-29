@@ -6,6 +6,10 @@ class Villano{
   int tipoMago, hechizos;
   float vida, ang, angulo, cx, cy;
   ArrayList<Fuego> fuegos;
+  SpriteSheet ani;
+  boolean active;
+  long instanteAnimacion;
+  int period;
   
   
   
@@ -13,23 +17,51 @@ class Villano{
     
     pos = new PVector (random(width*0.75, width), random(0, height));
     vel = new PVector(velx, vely);
+    instanteAnimacion = millis();
+    period = 5000;
+    
     
     //fuegos = new ArrayList<Fuego>();
     
     vida = 100;
     hechizos = 0;
     
-    
     if(tipo == 1) {
-      imagenMago = loadImage("MagoRojo.png");
+      ani = new SpriteSheet("MR_", 12, "png");
     }
     else if(tipo == 2) {
-      imagenMago = loadImage("MagoMorado.png");
+      ani = new SpriteSheet("MM_", 12, "png");
     }
      else if(tipo == 3) {
-      imagenMago = loadImage("MagoCyan.png");
+      ani = new SpriteSheet("MC_", 12, "png");;
     }
+    
+    
+    //active = true;
+    //ani.noLoop();
+    //ani.play();
+      
+    
+    
   
+  }
+  
+  void dibujar() {
+    active = true;
+    
+    if (millis() - instanteAnimacion > period) {
+      
+      ani.noLoop();
+      ani.play();
+      instanteAnimacion = millis();
+    }
+    
+    pushMatrix();
+    imageMode(CENTER);
+    ani.display(pos.x, pos.y);
+    if (ani.isFinished())
+      active = false;
+    popMatrix();
   }
   
   
@@ -45,8 +77,8 @@ class Villano{
       vel.y *= -1;
     }
     
-    imageMode(CENTER);
-    image(imagenMago, pos.x, pos.y);
+    //imageMode(CENTER);
+    //image(imagenMago, pos.x, pos.y);
   }
   
   // _____________________________ funciones 
