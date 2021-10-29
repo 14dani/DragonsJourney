@@ -14,7 +14,7 @@ int intervaloDificultad;
 long instanteDificultad;
 
 float velocidadEnemigo;
-
+int level;
 
 int escenario;
 
@@ -56,10 +56,6 @@ ArrayList<FuegoAnimacion> fuegos;
 
 Nube[] clouds = new Nube[5];
 
-
-//Cambio de nivel
-boolean cambioNivel;
-int nivel;
 
 
 
@@ -119,7 +115,6 @@ void setup() {
   explosiones = new ArrayList<Explosion>();
   fuegos = new ArrayList<FuegoAnimacion>();
   FuegoDragon = new ArrayList<Fuego>();
-
   
   
 }
@@ -157,7 +152,35 @@ void escJuego(){
   playI.pause();
   playJ.play();
   //playJ.loop();
-
+    
+    
+  //_______________________________________________________Estrellas
+  //for (int i = 0; i < estrellas.size(); i++){
+  //  Escenario tmp = estrellas.get(i);
+  //  PVector aux = tmp.getPos();
+  //  float d = dist(width/2, height/2, aux.x, aux.y);
+  //  float maxDist = dist(0, 0, width/2, height/2);
+  //  float tam = map(d,0, maxDist, 5, 40);
+    
+  //  tmp.dibujarEstrella(tam);
+  //  tmp.moverEstrella();
+    
+  //}
+  //_______________________________________________________
+    
+    
+  
+  //------------------- funciones que se relacionana con mago x dragon
+  //If vida de mago es == 0 
+  //float ganarHechizo() 
+  //-------------------------- función para restar vida si el poder del mago le pega al dragon
+  //if (aux.getPosBalaMago().dist(heroe.getPosDragon()) <= 20) {
+  //      if (aux.getValidaMago()) {
+  //        heroe.restarVida();
+  //        aux.quitarBala();
+  //      //  playerDeath.trigger();
+  //      }
+  //    } 
   
 
 //Ataques de mago a dragon
@@ -172,10 +195,16 @@ void escJuego(){
       
       heroe.restarVida();
       if(heroe.getVida()==0){
+<<<<<<< HEAD
       escenario = 5;
       //  instant = millis();
         //escGameOver();
       //}
+=======
+        escenario = 5;
+        escGameOver();
+      }
+>>>>>>> parent of 7670310... Cambios
     }
     
     if(!tmp.isPlaying()){
@@ -184,8 +213,6 @@ void escJuego(){
   
   }
   
-  
-  //Explosiones
   for (int x=0; x<explosiones.size(); x++) {
         Explosion tmp = explosiones.get(x);
         if (tmp.isActive()) {
@@ -219,6 +246,7 @@ void escJuego(){
       fuegos.add(new FuegoAnimacion(heroeSeleccionado, tmp.getPosFuego()));
       tmp.quitar();
       
+<<<<<<< HEAD
       vlln.restarVida();
       if(nivel == 1){
         if(vlln.getVida() == 0 && heroe.getVida() > 0){
@@ -226,6 +254,9 @@ void escJuego(){
         }
       }
         
+=======
+      //heroe.quitarVida();
+>>>>>>> parent of 7670310... Cambios
     }
     
     if(!tmp.isPlaying()){
@@ -234,8 +265,6 @@ void escJuego(){
   
   }
   
-  
-  //AnimacionFuego
   for (int x=0; x<fuegos.size(); x++) {
         FuegoAnimacion tmp = fuegos.get(x);
         if (tmp.isActive()) {
@@ -251,6 +280,7 @@ void escJuego(){
   heroe.moverYdibujo(mouseY, mouseX);
   heroe.getPosDragon();
   
+<<<<<<< HEAD
   
   
   
@@ -376,6 +406,8 @@ void escJuego(){
   
   
   
+=======
+>>>>>>> parent of 7670310... Cambios
 
 }
 
@@ -401,13 +433,11 @@ void draw() {
   }
 }
 
-
-
 void keyPressed(){
   if (escenario == 3) {
     if (key == 's' || key == 'S') {
       
-     
+      //Nivel 1
       heroeSeleccionado = 's';
       heroe.selDragon(1);
       escJuego1.selEsc(1);
@@ -512,7 +542,7 @@ void keyPressed(){
   }
   else if(key == '5'){
     escenario = 5;
-    
+    instant = millis();
   }
   
   

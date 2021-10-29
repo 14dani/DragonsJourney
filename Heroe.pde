@@ -101,12 +101,13 @@ class Heroe{
   void restarVida() {
    vida-=20; 
   }
-  
+    float ganarHechizo() {
+   return hechizos; 
+  }
   
   void resetDrag() {
     vida = 100;
-    instanteDisparo = millis();
-    intervaloDisparo = 5000;
+    hechizos = 0;
   }
 
 }

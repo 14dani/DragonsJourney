@@ -85,9 +85,12 @@ class Villano{
     
     //imageMode(CENTER);
     //image(imagenMago, pos.x, pos.y);
+<<<<<<< HEAD
     
 
     
+=======
+>>>>>>> parent of 7670310... Cambios
   }
   
   // _____________________________ funciones 
@@ -96,19 +99,9 @@ class Villano{
     return pos;
   }
   
-  float getVida() {
-   return vida; 
-  }
-  
-  void restarVida() {
-   vida-=20; 
-  }
-  
-  
-  void resetDrag() {
-    vida = 100;
-    instanteDisparo = millis();
-    intervaloDisparo = 5000;
+  void setPos (PVector posicion) {
+   pos = posicion; 
+    
   }
   
 
