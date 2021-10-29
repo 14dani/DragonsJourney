@@ -63,7 +63,7 @@ void setup() {
   
   //size(1920,1080);
   fullScreen();
-  frameRate(10);
+  frameRate(12);
   
   minim = new Minim(this);
   
@@ -146,6 +146,7 @@ void escGameOver (){
   playJ.pause();
   playI.pause();
   playE.play();
+  playE.loop();
   if (millis () - instant > interval) {
     playE.pause();
     escenario = 1;
