@@ -53,7 +53,7 @@ class Ataque{
      imageMode(CENTER);
      image(img, 0, 0);
      popMatrix();
-     r+=7;
+     r+=10;
   }
   
   
@@ -65,7 +65,7 @@ class Ataque{
     //}
     
     if (pos.y <= 0 || pos.y >= height) {
-      vel.y *= -1;
+      vel.y *= (random(-1,-3));
     }
     
   }

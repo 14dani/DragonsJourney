@@ -4,6 +4,8 @@ Minim minim;
 AudioPlayer playI;
 AudioPlayer playJ;
 AudioPlayer playE;
+AudioPlayer playG;
+
 AudioSample playPauseB;
 AudioSample explo;//Para explociones de los hechizos
 AudioSample fireball1;//para cuando dispara
@@ -81,9 +83,10 @@ void setup() {
   playI = minim.loadFile("Arab Ambient (Full).mp3");
   playJ = minim.loadFile("Oriental Arabian Oud.mp3");
   playE = minim.loadFile("Dark Arabic Oriental (Full).mp3");
+  playG = minim.loadFile("Epic Egyptian Fanfare.mp3");
   explo = minim.loadSample("11095 ancestor curse spell.mp3");
-  //fireball1 = minim.loadSample("Fireball 01 Whoosh.mp3");
-  //fireball2 = minim.loadSample("Fireball 02 Explosion.mp3");
+  fireball1 = minim.loadSample("Fireball 01 Whoosh.mp3");
+  fireball2 = minim.loadSample("Fireball 02 Explosion.mp3");
   
   escenario = 1;
   interval = 25000;
@@ -97,7 +100,7 @@ void setup() {
   escJuego3 = new Escenario(sel);
   escJuego4 = new Escenario(sel);
   escPortada = new Escenario(loadImage("Intro.png"));
-  escIntro = new Escenario(loadImage("Screenshot (382).png"));
+  escIntro = new Escenario(loadImage("Portada2.png"));
   cambiodeNivel = false;
 
   
@@ -158,7 +161,7 @@ void escPortada (){
   playJ.pause();
   
   playI.play();
-  playI.loop();
+  //playI.loop();
 }
 
 void escVictoria (){
@@ -166,8 +169,8 @@ void escVictoria (){
   playE.pause();
   playJ.pause();
   
-  playI.play();
-  playI.loop();
+  playG.play();
+  //playI.loop();
   
   if (millis () - instant > interval) {
     playE.pause();
@@ -272,7 +275,7 @@ void escJuegoNIV1(){
       fuegos.add(new FuegoAnimacion(heroeSeleccionado, tmp.getPosFuego()));
       tmp.quitar();
       
-
+      fireball2.trigger();
       vlln1.restarVida();
         if(vlln1.getVida() <= 0){
           escenario = 5;
@@ -386,7 +389,7 @@ void escJuegoNIV2(){
       fuegos.add(new FuegoAnimacion(heroeSeleccionado, tmp.getPosFuego()));
       tmp.quitar();
       
-
+      fireball2.trigger();
       vlln2.restarVida();
         if(vlln2.getVida() <= 0){
           escenario = 6;
@@ -505,6 +508,7 @@ void escJuegoNIV3(){
     if (tmp.getPosFuego().dist(vllnBoss.getPos()) < 120 && tmp.isPlaying()){
       fuegos.add(new FuegoAnimacion(heroeSeleccionado, tmp.getPosFuego()));
       tmp.quitar();
+      fireball2.trigger();
       
 
       vllnBoss.restarVida();
@@ -559,13 +563,16 @@ void draw() {
   }
   else if(escenario == 4){
     escJuegoNIV1();
+    noCursor();
     }
     //
   else if(escenario == 5){
       escJuegoNIV2();
+      noCursor();
     }
   else if(escenario == 6){
       escJuegoNIV3();
+      noCursor();
   }
   else if(escenario == 8){
     escGameOver();
@@ -649,6 +656,7 @@ void keyPressed(){
       PVector aux = heroe.getPosDragon();
       Fuego nuevo = new Fuego(heroeSeleccionado,aux.x, aux.y);
       FuegoDragon.add(nuevo);
+      fireball1.trigger();
       println(FuegoDragon.size());
     } 
   }
@@ -676,4 +684,35 @@ void keyPressed(){
   
   
 
+}
+
+void mousePressed () {
+  if (escenario == 2 ) {
+    if (mouseButton == LEFT ) {
+          if (mouseX < width && mouseX > width*0.75 && mouseY > width*0.25 && mouseY < width*0.75) {
+          escenario =3;
+          }
+        }
+        if (mouseButton == LEFT ) {
+          if (mouseX < width && mouseX > width*0.75 && mouseY > width*0.25 && mouseY < width*0.75) {
+          escenario =3;
+  
+  
+      }
+    }
+  }
+  if (escenario == 1 ) {
+    if (mouseButton == LEFT ) {
+          if (mouseX < width && mouseX > width*0.5 && mouseY > width*0.15 && mouseY < width*0.5) {
+          escenario =2;
+          }
+        }
+        if (mouseButton == LEFT ) {
+          if (mouseX < width && mouseX > width*0.5 && mouseY > width*0.15 && mouseY < width*0.5) {
+          escenario =2;
+  
+  
+      }
+    }
+  }
 }

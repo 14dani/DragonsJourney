@@ -76,7 +76,7 @@ class Fuego {
   imageMode(CENTER);
   image(imgFuego, 0, 0);
   popMatrix();
-  r+=25;
+  r+=20;
   
   
   }
