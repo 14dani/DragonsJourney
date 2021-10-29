@@ -5,6 +5,9 @@ AudioPlayer playI;
 AudioPlayer playJ;
 AudioPlayer playE;
 AudioSample playPauseB;
+AudioSample explo;//Para explociones de los hechizos
+AudioSample fireball1;//para cuando dispara
+AudioSample fireball2;//para cuando le pega al mago
 //--------------------------------variables
 
 int intervaloDisparo;
@@ -51,6 +54,8 @@ ArrayList<Ataque> ataques;
 ArrayList<AtaqueBoss> ataquesBoss;
 long instanteAtaque;
 int intervaloAtaque;
+long instanteAtaque2;
+int intervaloAtaque2;
 long instanteAtaqueBoss;
 int intervaloAtaqueBoss;
 
@@ -76,6 +81,10 @@ void setup() {
   playI = minim.loadFile("Arab Ambient (Full).mp3");
   playJ = minim.loadFile("Oriental Arabian Oud.mp3");
   playE = minim.loadFile("Dark Arabic Oriental (Full).mp3");
+  explo = minim.loadSample("11095 ancestor curse spell.mp3");
+  //fireball1 = minim.loadSample("Fireball 01 Whoosh.mp3");
+  //fireball2 = minim.loadSample("Fireball 02 Explosion.mp3");
+  
   escenario = 1;
   interval = 25000;
   instant = millis();
@@ -122,7 +131,7 @@ void setup() {
   
   vlln1 = new Villano(1, random(-10, -15), random(-15,10));
   
-  vlln2 = new Villano(2, random(-1, -5), random(-5,0));
+  vlln2 = new Villano(2, random(-15, -20), random(-20,5));
   
   vlln3 = new Villano(3, random(-1, -5), random(-5,0));
   
@@ -159,6 +168,13 @@ void escVictoria (){
   
   playI.play();
   playI.loop();
+  
+  if (millis () - instant > interval) {
+    playE.pause();
+    escenario = 1;
+    
+    
+  }
 }
 
 
@@ -202,6 +218,7 @@ void escJuegoNIV1(){
     if (heroe.getPosDragon().dist(tmp.getPos()) < 150 && tmp.isPlaying()){
       explosiones.add(new Explosion(tipoVillano, tmp.getPos()));
       tmp.quitar();
+      explo.trigger();
       
       heroe.restarVida();
       if(heroe.getVida()<=0){
@@ -314,6 +331,7 @@ void escJuegoNIV2(){
     if (heroe.getPosDragon().dist(tmp.getPos()) < 150 && tmp.isPlaying()){
       explosiones.add(new Explosion(tipoVillano, tmp.getPos()));
       tmp.quitar();
+      explo.trigger();
       
       heroe.restarVida();
       if(heroe.getVida()<=0){
@@ -343,11 +361,11 @@ void escJuegoNIV2(){
         explosiones.remove(x);
       }
     
-    if (millis() - instanteAtaque > intervaloAtaque) {
+    if (millis() - instanteAtaque2 > intervaloAtaque2) {
     PVector aux = vlln2.getPos();
     Ataque nuevo = new Ataque(2, aux.x, aux.y,random(-1,-2), random(-9,3));
     ataques.add(nuevo);
-    instanteAtaque = millis();
+    instanteAtaque2 = millis();
   }
   
   
@@ -435,6 +453,7 @@ void escJuegoNIV3(){
     if (heroe.getPosDragon().dist(tmp.getPos()) < 150 && tmp.isPlaying()){
       explosiones.add(new Explosion(1, tmp.getPos()));
       tmp.quitar();
+      explo.trigger();
       
       heroe.restarVida();
       if(heroe.getVida()<=0){
@@ -571,6 +590,9 @@ void keyPressed(){
       instanteAtaque = millis();
       intervaloAtaque = 3000;
       
+      instanteAtaque2 = millis();
+      intervaloAtaque2 = 2000;
+      
       instanteAtaqueBoss = millis();
       intervaloAtaqueBoss = 1000;
       
@@ -590,6 +612,9 @@ void keyPressed(){
       instanteAtaque = millis();
       intervaloAtaque = 3000;
       
+      instanteAtaque2 = millis();
+      intervaloAtaque2 = 2000;
+      
       instanteAtaqueBoss = millis();
       intervaloAtaqueBoss = 1000;
     }
@@ -606,8 +631,11 @@ void keyPressed(){
       instanteAtaque = millis();
       intervaloAtaque = 3000;
       
+      instanteAtaque2 = millis();
+      intervaloAtaque2 = 2000;
+      
       instanteAtaqueBoss = millis();
-      intervaloAtaqueBoss = 1000;
+      intervaloAtaqueBoss = 1500;
       
       
       

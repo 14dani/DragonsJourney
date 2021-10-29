@@ -15,7 +15,7 @@ class Boss{
   public Boss(){
     
     pos = new PVector (random(width*0.75, width), random(0, height));
-    vel = new PVector(-1.9, -1.9);
+    vel = new PVector(-2, -2);
     
     period = 1000;
     
