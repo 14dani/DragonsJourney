@@ -103,5 +103,10 @@ class Villano{
     
   }
   
-
+  void restarVida() {
+   vida-=20; 
+  }
+    float getVida() {
+   return vida; 
+  }
 }
