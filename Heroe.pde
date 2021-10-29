@@ -25,6 +25,7 @@ class Heroe{
   void selDragon(int _sel) {
     if(_sel == 1) {
       ani = new SpriteSheet("HS_", 10, "png");
+      //ani.resize(250,0);
       vel=1; 
     }
     else if(_sel == 2) {
