@@ -238,7 +238,7 @@ void escJuego(){
     tmp.dibujar();
     tmp.mover();
     
-    if (tmp.getPosFuego().dist(vlln.getPos()) < 150 && tmp.isPlaying()){
+    if (tmp.getPosFuego().dist(vlln.getPos()) < 120 && tmp.isPlaying()){
       fuegos.add(new FuegoAnimacion(heroeSeleccionado, tmp.getPosFuego()));
       tmp.quitar();
       println("colision");
