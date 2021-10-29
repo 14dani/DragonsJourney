@@ -84,11 +84,16 @@ class Fuego {
   
   void mover() {
     loc.add(vel);
-    if (dist(loc.x, loc.y, width/2, height/2) < 20)
-      Valido = false;
+    if(loc.y>width){
+      isAlive = false;
     
-    if (dist(loc.x, loc.y, width/2, height/2) < 20)
-      Valido = false;
+    }
+    
+    //if (dist(loc.x, loc.y, width/2, height/2) < 20)
+    //  Valido = false;
+    
+    //if (dist(loc.x, loc.y, width/2, height/2) < 20)
+    //  Valido = false;
     }
     
   boolean isPlaying() {

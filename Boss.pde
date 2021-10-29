@@ -33,6 +33,10 @@ class Boss{
     
     imageMode(CENTER);
     image(imagenBoss, pos.x, pos.y);
+    textSize(15);
+    fill(255);
+    textAlign(RIGHT);
+    text("HP: "+vida+"%", width-20,20);
     
   }
   
@@ -42,20 +46,16 @@ class Boss{
     pos.add(vel);  //x += vx; //y += vy;
     
     if (pos.x <= width*0.75 || pos.x >= width) {
-      vel.x *= -3;
+      vel.x *= -1;
     }
     
     if (pos.y <= 0 || pos.y >= height) {
-      vel.y *= -3;
+      vel.y *= -1;
     }
     
-    //imageMode(CENTER);
-    //image(imagenMago, pos.x, pos.y);
+   
     
-    textSize(15);
-      fill(255);
-      textAlign(RIGHT);
-      text("HP: "+vida+"%", width-20,20);
+    
     
   }
   

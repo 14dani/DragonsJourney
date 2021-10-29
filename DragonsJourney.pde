@@ -152,6 +152,15 @@ void escPortada (){
   playI.loop();
 }
 
+void escVictoria (){
+  escVictoria.display();
+  playE.pause();
+  playJ.pause();
+  
+  playI.play();
+  playI.loop();
+}
+
 
 
 void escGameOver (){
@@ -195,10 +204,10 @@ void escJuegoNIV1(){
       tmp.quitar();
       
       heroe.restarVida();
-      if(heroe.getVida()==0){
+      if(heroe.getVida()<=0){
 
       escenario = 8;
-      //  instant = millis();
+      instant = millis();
         //escGameOver();
       //}
       
@@ -248,8 +257,9 @@ void escJuegoNIV1(){
       
 
       vlln1.restarVida();
-        if(vlln1.getVida() == 0){
+        if(vlln1.getVida() <= 0){
           escenario = 5;
+          ataques.clear();
         }
       }
 
@@ -306,10 +316,10 @@ void escJuegoNIV2(){
       tmp.quitar();
       
       heroe.restarVida();
-      if(heroe.getVida()==0){
+      if(heroe.getVida()<=0){
 
       escenario = 8;
-      //  instant = millis();
+      instant = millis();
         //escGameOver();
       //}
 
@@ -360,18 +370,24 @@ void escJuegoNIV2(){
       
 
       vlln2.restarVida();
-        if(vlln2.getVida() == 0){
+        if(vlln2.getVida() <= 0){
           escenario = 6;
-        }
+          ataques.clear();
+          playI.pause();
+        playJ.play();
+        playJ.loop();
+          }
       }
 
       //heroe.quitarVida();
+      if(!tmp.isPlaying()){
+      FuegoDragon.remove(x);
+    }
 
     }
     
-    //if(!tmp.isPlaying()){
-    //  FuegoDragon.remove(x);
-    //}
+    
+    
   
   
   
@@ -399,15 +415,13 @@ void escJuegoNIV2(){
 
 
 void escJuegoNIV3(){
-  ataques.clear();
+  
   escJuego3.display();
   textSize(30);
   fill(255);
   textAlign(CENTER);
   text("Nivel 3", width/2,50);
-  playI.pause();
-  playJ.play();
-  //playJ.loop();
+  
   
 
   
@@ -423,9 +437,9 @@ void escJuegoNIV3(){
       tmp.quitar();
       
       heroe.restarVida();
-      if(heroe.getVida()==0){
+      if(heroe.getVida()<=0){
         escenario = 8;
-      //  instant = millis();
+        instant = millis();
         //escGameOver();
       //}
       
@@ -449,10 +463,10 @@ void escJuegoNIV3(){
       }
     
     if (millis() - instanteAtaqueBoss > intervaloAtaqueBoss) {
-    PVector aux = vllnBoss.getPos();
-    AtaqueBoss nuevo = new AtaqueBoss(aux.x, aux.y,random(-4,-1), random(-5,2));
-    ataquesBoss.add(nuevo);
-    instanteAtaqueBoss = millis();
+      PVector aux = vllnBoss.getPos();
+      AtaqueBoss nuevo = new AtaqueBoss(aux.x, aux.y,random(-4,-1), random(-5,2));
+      ataquesBoss.add(nuevo);
+      instanteAtaqueBoss = millis();
   }
   
   
@@ -475,8 +489,9 @@ void escJuegoNIV3(){
       
 
       vllnBoss.restarVida();
-        if(vllnBoss.getVida() == 0){
-          escenario = 5;
+        if(vllnBoss.getVida() <= 0){
+          escenario = 9;
+          instant = millis();
         }
       }
 
@@ -535,6 +550,9 @@ void draw() {
   }
   else if(escenario == 8){
     escGameOver();
+  }
+  else if(escenario == 9){
+    escVictoria();
   }
 }
 
