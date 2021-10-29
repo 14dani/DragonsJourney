@@ -103,7 +103,7 @@ void setup() {
   
   
   //___________________________________Villano
-  tipoVillano = int(random(2,3));
+  tipoVillano = 1;
   
   vlln = new Villano(tipoVillano, random(-1, -5), random(-5,0));
   
@@ -225,6 +225,7 @@ void escJuego(){
   
   
   //____________________________________________________Villano
+  vlln.dibujar();
   vlln.mover();
   
   
