@@ -704,6 +704,8 @@ void keyPressed(){
       escJuego3.selEsc(2);
       heroe.selDragon(2);
       escenario = 4;
+      instanteAtaque = millis();
+      intervaloAtaque = 5000;
       
       
       
@@ -754,7 +756,7 @@ void keyPressed(){
   }
   else if(key == '5'){
     escenario = 5;
-    instant = millis();
+    
   }
   
   
