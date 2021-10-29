@@ -98,8 +98,8 @@ class Heroe{
    return vida; 
   }
   
-  float restarVida() {
-   return vida-20; 
+  void restarVida() {
+   vida-=20; 
   }
     float ganarHechizo() {
    return hechizos; 

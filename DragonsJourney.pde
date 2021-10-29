@@ -76,7 +76,8 @@ void setup() {
   
   
   //______________________________________________________________________pantalla
- 
+  
+  escJuego1 = new Escenario(sel);
   escPortada = new Escenario(loadImage("Screenshot (386).png"));
   escIntro = new Escenario(loadImage("Screenshot (382).png"));
   
@@ -95,6 +96,7 @@ void setup() {
   escSeleccion = new Escenario(loadImage("Escenario-3.png"));
   
   escGameOver = new Escenario(loadImage("Screenshot (385).png"));
+  
   
   
   
@@ -191,7 +193,11 @@ void escJuego(){
       explosiones.add(new Explosion(tipoVillano, tmp.getPos()));
       tmp.quitar();
       
-      //heroe.quitarVida();
+      heroe.restarVida();
+      if(heroe.getVida()==0){
+        escenario = 5;
+        escGameOver();
+      }
     }
     
     if(!tmp.isPlaying()){
