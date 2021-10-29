@@ -27,13 +27,13 @@ class Villano{
     hechizos = 0;
     
     if(tipo == 1) {
-      ani = new SpriteSheet("MR_", 12, "png");
+      ani = new SpriteSheet("MR1_", 12, "png");
     }
     else if(tipo == 2) {
-      ani = new SpriteSheet("MM_", 12, "png");
+      ani = new SpriteSheet("MM1_", 12, "png");
     }
      else if(tipo == 3) {
-      ani = new SpriteSheet("MC_", 12, "png");;
+      ani = new SpriteSheet("MC1_", 12, "png");;
     }
     
     
