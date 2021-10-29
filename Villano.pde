@@ -79,6 +79,12 @@ class Villano{
     
     //imageMode(CENTER);
     //image(imagenMago, pos.x, pos.y);
+    
+    textSize(15);
+      fill(255);
+      textAlign(RIGHT);
+      text("HP: "+vida+"%", 20,20);
+    
   }
   
   // _____________________________ funciones 
@@ -87,9 +93,19 @@ class Villano{
     return pos;
   }
   
-  void setPos (PVector posicion) {
-   pos = posicion; 
-    
+  float getVida() {
+   return vida; 
+  }
+  
+  void restarVida() {
+   vida-=20; 
+  }
+  
+  
+  void resetDrag() {
+    vida = 100;
+    instanteDisparo = millis();
+    intervaloDisparo = 5000;
   }
   
 
